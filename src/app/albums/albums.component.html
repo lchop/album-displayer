@@ -6,32 +6,33 @@
     <h2 class="font-serif font-bold text-center text-slate-700">
       {{ count }} albums availables
     </h2>
-    <div class="flex items-center justify-center pt-2 px-4">
-      <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
+    <div class="flex flex-col items-center justify-center pt-2 px-4">
+      <form  (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
         <input
-          class="font-thin text-slate-500 px-2 rounded-md"
+          class="font-thin text-slate-500 px-2 py-1 rounded-md"
+          (keyup)="onTyping($event)"
           name="word"
-          ngModel
           type="text"
           placeholder="Search"
           aria-label="Search"
         />
         <button
           [disabled]="formSearch.invalid"
-          class="bg-slate-500 hover:bg-slate-600 text-white font-thin ml-2 py-2 px-4 rounded-xl"
+          class="bg-slate-500 hover:bg-slate-600 text-white font-thin ml-2 py-1 px-2 rounded-xl"
           type="submit"
         >
           Search
         </button>
       </form>
+      <div *ngIf="searchFound > 0; else nothingFound">
+        <div class="flex items-center justify-center">
+            <h2 class="font-serif font-bold text-center text-slate-700">
+                {{ searchFound }} albums found
+            </h2>
+        </div>
+      </div>
   </div>
-  <div *ngIf="searchFound > 0; else nothingFound">
-    <div class="flex items-center justify-center py-1 px-4">
-        <h2 class="font-serif font-bold text-center text-slate-700">
-            {{ searchFound }} albums found
-        </h2>
-    </div>
-  </div>
+  
  
 </div>
 <ng-template #nothingFound>

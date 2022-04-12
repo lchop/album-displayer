@@ -17,6 +17,7 @@ export class AlbumsComponent implements OnInit {
   albums!: Album[];
   count =0;
   searchFound = 0;
+  word = '';
 
   constructor(private albumService: AlbumService) { 
     this.albums = albumService.getAlbums();
@@ -24,6 +25,20 @@ export class AlbumsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onTyping(event: any)
+  {
+    if (event.target.value.length > 0) {
+      let search = this.albumService.searchAlbums(event.target.value);
+      this.albums = search;
+      this.searchFound = search.length;
+    }
+    else
+    {
+      this.albums = this.albumService.getAlbums();
+      this.searchFound = 0;
+    }
   }
 
   onClick(album: Album): void {
@@ -35,9 +50,8 @@ export class AlbumsComponent implements OnInit {
     if(albumName.value['word'] !== "") {
       let search = this.albumService.searchAlbums(albumName.value['word'])
       if (search.length > 0) {
-        this.albums = this.albumService.searchAlbums(albumName.value['word']);
+        this.albums = search;
         this.searchFound = search.length;
-
       }
       else
       {
