@@ -6,13 +6,12 @@
     <h2 class="font-serif font-bold text-center text-slate-700">
       {{ count }} albums availables
     </h2>
-    <div class="flex items-center justify-center py-4 px-4">
+    <div class="flex items-center justify-center pt-2 px-4">
       <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
         <input
-          class="font-thin text-slate-500 px-2"
+          class="font-thin text-slate-500 px-2 rounded-md"
           name="word"
           ngModel
-          required
           type="text"
           placeholder="Search"
           aria-label="Search"
@@ -27,7 +26,7 @@
       </form>
   </div>
   <div *ngIf="searchFound > 0; else nothingFound">
-    <div class="flex items-center justify-center py-4 px-4">
+    <div class="flex items-center justify-center py-1 px-4">
         <h2 class="font-serif font-bold text-center text-slate-700">
             {{ searchFound }} albums found
         </h2>

@@ -32,12 +32,18 @@ export class AlbumsComponent implements OnInit {
   }
 
   onSubmit(albumName: NgForm): void {
-    console.log(albumName.value);
-    let search = this.albumService.searchAlbums(albumName.value['word'])
-    if (search.length > 0) {
-      this.albums = this.albumService.searchAlbums(albumName.value['word']);
-      this.searchFound = search.length;
+    if(albumName.value['word'] !== "") {
+      let search = this.albumService.searchAlbums(albumName.value['word'])
+      if (search.length > 0) {
+        this.albums = this.albumService.searchAlbums(albumName.value['word']);
+        this.searchFound = search.length;
 
+      }
+      else
+      {
+        this.albums = this.albumService.getAlbums();
+        this.searchFound = 0;
+      }
     }
     else
     {
