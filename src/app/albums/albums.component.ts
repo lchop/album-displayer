@@ -28,6 +28,8 @@ export class AlbumsComponent implements OnInit {
 
   constructor(private albumService: AlbumService) { 
     this.count = albumService.getCountAlbums();
+    let test = albumService.currentPage;
+    console.log(test);
   }
 
   ngOnInit(): void {
