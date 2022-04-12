@@ -8,6 +8,8 @@ import { AlbumDetailsComponent } from './album-details/album-details.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { FormsModule } from '@angular/forms';
 import { DescriptionAlbumPageComponent } from './description-album-page/description-album-page.component';
+import { LoginComponent } from './login/login.component';
+import { PaginateComponent } from './paginate/paginate.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { DescriptionAlbumPageComponent } from './description-album-page/descript
     AlbumDetailsComponent,
     MainPageComponent,
     DescriptionAlbumPageComponent,
+    LoginComponent,
+    PaginateComponent,
   ],
   imports: [
     BrowserModule,

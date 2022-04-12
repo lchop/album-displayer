@@ -8,10 +8,15 @@ import { Album } from '../albums/album.model';
 })
 export class MainPageComponent implements OnInit {
   albumPlaying = {} as Album;
+  currentAlbumPage = 1;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  setCurrentAlbumPage(page: number): void {
+    this.currentAlbumPage = page;
   }
 
   onPlay(event: Album): void {

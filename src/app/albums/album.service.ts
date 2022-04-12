@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Album } from './album.model';
-import { ALBUMS, List, ALBUM_LISTS } from './mock-albums';
+import { ALBUMS, ALBUM_LISTS } from './mock-albums';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,12 @@ import { ALBUMS, List, ALBUM_LISTS } from './mock-albums';
 export class AlbumService {
 
   constructor() { }
+
+  sendCurrentNumberPage = new Subject<number>();
+
+  currentPage(page: number) {
+    return this.sendCurrentNumberPage.next(page);
+  }
 
   getAlbums(): Album[] {
     return ALBUMS.sort((a,b)=> a.title.localeCompare(b.title));
@@ -27,5 +34,9 @@ export class AlbumService {
 
   searchAlbums(word: string): Album[] {
     return ALBUMS.filter(album => album.title.toLowerCase().includes(word.toLowerCase()));
+  }
+
+  paginate(page: number, size: number): Album[] {
+    return ALBUMS.slice((page - 1) * size, page * size);
   }
 }

@@ -12,5 +12,8 @@
     </ng-template>
 </div>
 <div class="bg-slate-300">
-    <app-albums (onPlay)="onPlay($event)"></app-albums>
+    <app-albums [currentPage]= "currentAlbumPage" (onPlay)="onPlay($event)"></app-albums>
+    <app-paginate (currentPage)="setCurrentAlbumPage($event)"></app-paginate>
 </div>
+
+

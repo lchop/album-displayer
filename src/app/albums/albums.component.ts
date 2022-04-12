@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Album } from './album.model';
 import { AlbumService } from './album.service';
@@ -10,17 +10,23 @@ import { ALBUMS } from './mock-albums';
   styleUrls: ['./albums.component.scss']
 })
 export class AlbumsComponent implements OnInit {
+
+  albums!: Album[];
+    
+  @Input() set currentPage(value: number){
+      console.log(value);
+      this.albums = this.albumService.paginate(value,2);
+  }
   @Output() onPlay: EventEmitter<Album> = new EventEmitter();
 
   titlePage: string = "- Albums Music -";
   selectedAlbum!: Album;
-  albums!: Album[];
+    
   count =0;
   searchFound = 0;
   word = '';
 
   constructor(private albumService: AlbumService) { 
-    this.albums = albumService.getAlbums();
     this.count = albumService.getCountAlbums();
   }
 
