@@ -1,4 +1,17 @@
+<nav class="bg-slate-500  px-2 py-2">
+    <div class="container flex flex-wrap justify-between items-center mx-auto">
+      <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+        <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+          <li>
+            <a routerLink="/main" class="block py-2 pr-4 pl-3 border-transparent text-slate-50 hover:text-slate-100 border-b-2 hover:border-slate-100 bg-transparent">Home</a>
+          </li>
+          <li>
+            <a routerLink="/description" class="block py-2 pr-4 pl-3 text-slate-50 border-b-2 border-transparent hover:border-slate-100 hover:text-slate-100 bg-transparent">Details</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<div class="bg-slate-400">
-    <app-main-page></app-main-page>
-</div>
+  <router-outlet></router-outlet>
+  

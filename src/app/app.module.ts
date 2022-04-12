@@ -7,6 +7,7 @@ import { AlbumsComponent } from './albums/albums.component';
 import { AlbumDetailsComponent } from './album-details/album-details.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { FormsModule } from '@angular/forms';
+import { DescriptionAlbumPageComponent } from './description-album-page/description-album-page.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     AlbumsComponent,
     AlbumDetailsComponent,
     MainPageComponent,
+    DescriptionAlbumPageComponent,
   ],
   imports: [
     BrowserModule,

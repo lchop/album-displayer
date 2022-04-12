@@ -3,10 +3,10 @@
     <h1 class="font-serif font-extrabold text-center text-slate-800">
       {{ titlePage }}
     </h1>
-    <h2 class="font-serif font-bold text-center text-slate-700">
+    <h2 class="font-serif font-bold text-center text-slate-700 mt-2">
       {{ count }} albums availables
     </h2>
-    <div class="flex flex-col items-center justify-center pt-2 px-4">
+    <div class="flex flex-col items-center justify-center pt-2 px-4 mt-4">
       <form  (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
         <input
           class="font-thin text-slate-500 px-2 py-1 rounded-md"
@@ -56,11 +56,11 @@
     <ul class="grid grid-cols-1 place-content-center max-w-md">
       <li
         (click)="onClick(album)"
-        class="col-span-1 mb-4 px-4 py-8 bg-slate-100 shadow-md"
+        class="col-span-1 mb-4 px-4 py-8 bg-slate-100 shadow-md rounded-md"
         *ngFor="let album of albums"
       >
         <h2 class="px-1 py-2 font-bold text-gray-600">
-          Title: <span class="font-thin text-gray-500">{{ album.title }}</span>
+          Title: <a routerLink="/description"> <span class="font-thin text-gray-500">{{ album.title }}</span></a>
         </h2>
         <h2 class="px-1 py-2 font-bold text-gray-600">
           Name: <span class="font-thin text-gray-500">{{ album.name }}</span>

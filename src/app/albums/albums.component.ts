@@ -12,7 +12,7 @@ import { ALBUMS } from './mock-albums';
 export class AlbumsComponent implements OnInit {
   @Output() onPlay: EventEmitter<Album> = new EventEmitter();
 
-  titlePage: string = "Page principale Albums Music";
+  titlePage: string = "- Albums Music -";
   selectedAlbum!: Album;
   albums!: Album[];
   count =0;
