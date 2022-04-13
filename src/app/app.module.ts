@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { DescriptionAlbumPageComponent } from './description-album-page/description-album-page.component';
 import { LoginComponent } from './login/login.component';
 import { PaginateComponent } from './paginate/paginate.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PaginateComponent } from './paginate/paginate.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

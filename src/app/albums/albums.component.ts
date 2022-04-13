@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { interval, map, Observable, Subject, Subscription, take, timeInterval } from 'rxjs';
+import { interval, Observable, Subscription, take } from 'rxjs';
 import { Album } from './album.model';
 import { AlbumService } from './album.service';
 
@@ -15,8 +15,7 @@ export class AlbumsComponent implements OnInit {
   albums!: Album[];
     
   @Input() set currentPage(value: number){
-      console.log(value);
-      this.albums = this.albumService.paginate(value,2);
+      this.albumService.paginate(value,2).subscribe(albums => this.albums = albums);
   }
   @Output() onPlay: EventEmitter<Album> = new EventEmitter();
   @Output() onDurationStart: EventEmitter<string> = new EventEmitter();
@@ -35,22 +34,21 @@ export class AlbumsComponent implements OnInit {
   subscription !:Subscription;
 
   constructor(private albumService: AlbumService) { 
-    this.count = albumService.getCountAlbums();
   }
 
   ngOnInit(): void {
+    this.albumService.getCountAlbums().subscribe(count => this.count = count);
   }
 
   onTyping(event: any)
   {
     if (event.target.value.length > 0) {
-      let search = this.albumService.searchAlbums(event.target.value);
-      this.albums = search;
-      this.searchFound = search.length;
+      this.albumService.searchAlbums(event.target.value).subscribe(albums => this.albums = albums);
+      this.searchFound = this.albums.length;
     }
     else
     {
-      this.albums = this.albumService.getAlbums();
+      this.albumService.getAlbums().subscribe(albums => this.albums = albums);
       this.searchFound = 0;
     }
   }
@@ -80,20 +78,19 @@ export class AlbumsComponent implements OnInit {
 
   onSubmit(albumName: NgForm): void {
     if(albumName.value['word'] !== "") {
-      let search = this.albumService.searchAlbums(albumName.value['word'])
-      if (search.length > 0) {
-        this.albums = search;
-        this.searchFound = search.length;
+      this.albumService.searchAlbums(albumName.value['word']).subscribe(albums => this.albums = albums);
+      if (this.albums.length > 0) {
+        this.searchFound = this.albums.length;
       }
       else
       {
-        this.albums = this.albumService.getAlbums();
+        this.albumService.getAlbums().subscribe(albums => this.albums = albums);
         this.searchFound = 0;
       }
     }
     else
     {
-      this.albums = this.albumService.getAlbums();
+      this.albumService.getAlbums().subscribe(albums => this.albums = albums);
       this.searchFound = 0;
     }
   }
