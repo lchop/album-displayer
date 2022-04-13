@@ -17,13 +17,11 @@ export class DescriptionAlbumPageComponent implements OnInit {
     ) { }
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
     if (id) {
-      let data = this.aS.getAlbum(id);
-      if(data)
-      {
-        this.album = data;
-      }
+      this.aS.getAlbum(id).subscribe(album => {
+      if (album) {
+        this.album = album;
+      }});
     }
   }
 }

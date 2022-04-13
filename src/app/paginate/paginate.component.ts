@@ -11,7 +11,8 @@ export class PaginateComponent implements OnInit {
 
   perPage : number = 2;
   page: number = 1;
-  max_page : number = this.albumService.getCountAlbums() / this.perPage;
+  max_page: number = 0;
+  
   @Output() currentPage: EventEmitter<number> = new EventEmitter();
 
   constructor(private albumService: AlbumService) {
@@ -19,6 +20,7 @@ export class PaginateComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.albumService.getCountAlbums().subscribe(count => this.max_page = count / this.perPage);
   }
   
   next() {

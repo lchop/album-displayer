@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Album } from '../albums/album.model';
 
@@ -11,7 +12,7 @@ export class MainPageComponent implements OnInit {
   currentAlbumPage = 1;
   durationPlay = '';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
