@@ -7,7 +7,7 @@ export const ALBUMS: Album[] = [
         name: "Kirby Ortega",
         title: "pariatur nulla",
         description: "Voluptate mollit consectetur pariatur labore. Quis amet quis minim nulla voluptate amet nisi. Ut sint veniam magna aute velit minim laborum eiusmod mollit dolor laborum. Minim Lorem Lorem pariatur adipisicing laborum tempor consequat est officia proident. Qui consequat duis ipsum minim Lorem cillum in excepteur.\r\n",
-        duration: 600,
+        duration: 30,
         url: "http://placehold.it/32x32",
         like: "Much",
         tags: [

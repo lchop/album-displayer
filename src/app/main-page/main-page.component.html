@@ -6,13 +6,17 @@
         <h3 class="ml-2">
              {{ albumPlaying.name }}
         </h3>
+        
+        <h3 class="ml-2">
+            {{ durationPlay }}
+        </h3>
     </h2>
     <ng-template #notPlaying>
         Not Playing
     </ng-template>
 </div>
 <div class="bg-slate-300">
-    <app-albums [currentPage]= "currentAlbumPage" (onPlay)="onPlay($event)"></app-albums>
+    <app-albums [currentPage]= "currentAlbumPage" (onDurationStart)="onDurationStart($event)" (onPlay)="onPlay($event)"></app-albums>
     <app-paginate (currentPage)="setCurrentAlbumPage($event)"></app-paginate>
 </div>
 

@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { interval, map, Subject, Subscription, timeInterval } from 'rxjs';
 import { Album } from './album.model';
 import { AlbumService } from './album.service';
-import { ALBUMS } from './mock-albums';
+
 
 @Component({
   selector: 'app-albums',
@@ -18,18 +19,29 @@ export class AlbumsComponent implements OnInit {
       this.albums = this.albumService.paginate(value,2);
   }
   @Output() onPlay: EventEmitter<Album> = new EventEmitter();
+  @Output() onDurationStart: EventEmitter<string> = new EventEmitter();
+
 
   titlePage: string = "- Albums Music -";
   selectedAlbum!: Album;
-    
+  
   count =0;
   searchFound = 0;
   word = '';
 
+
+  subscription !:Subscription;
+  observableDuration$ = interval(1000).pipe(map(num => {
+    if ( num < this.selectedAlbum.duration) {
+      return `${Math.floor(num / 60)} min ${num % 60} s`;
+    }
+    else {
+      return 'Finished';
+    }
+  }));
+
   constructor(private albumService: AlbumService) { 
     this.count = albumService.getCountAlbums();
-    let test = albumService.currentPage;
-    console.log(test);
   }
 
   ngOnInit(): void {
@@ -51,6 +63,15 @@ export class AlbumsComponent implements OnInit {
 
   onClick(album: Album): void {
     this.selectedAlbum = album;
+    if(this.subscription != undefined)
+      this.subscription.unsubscribe();
+    if (this.observableDuration$ !== undefined) {
+      this.subscription = this.observableDuration$.subscribe({
+        next: (num) =>  {
+          this.onDurationStart.emit(num)
+        }
+      });
+    }
     this.onPlay.emit(album); // émettre un album vers le parent
   }
 
