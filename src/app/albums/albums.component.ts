@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { interval, map, Subject, Subscription, timeInterval } from 'rxjs';
+import { interval, map, Observable, Subject, Subscription, take, timeInterval } from 'rxjs';
 import { Album } from './album.model';
 import { AlbumService } from './album.service';
 
@@ -24,6 +24,8 @@ export class AlbumsComponent implements OnInit {
 
   titlePage: string = "- Albums Music -";
   selectedAlbum!: Album;
+
+  observableDuration$!: Observable<number>;
   
   count =0;
   searchFound = 0;
@@ -31,14 +33,6 @@ export class AlbumsComponent implements OnInit {
 
 
   subscription !:Subscription;
-  observableDuration$ = interval(1000).pipe(map(num => {
-    if ( num < this.selectedAlbum.duration) {
-      return `${Math.floor(num / 60)} min ${num % 60} s`;
-    }
-    else {
-      return 'Finished';
-    }
-  }));
 
   constructor(private albumService: AlbumService) { 
     this.count = albumService.getCountAlbums();
@@ -63,12 +57,21 @@ export class AlbumsComponent implements OnInit {
 
   onClick(album: Album): void {
     this.selectedAlbum = album;
+    this.observableDuration$ = interval(1000).pipe(take(this.selectedAlbum.duration + 1));
+
     if(this.subscription != undefined)
       this.subscription.unsubscribe();
     if (this.observableDuration$ !== undefined) {
       this.subscription = this.observableDuration$.subscribe({
         next: (num) =>  {
-          this.onDurationStart.emit(num)
+          if ( num < this.selectedAlbum.duration) {
+            let convertTime = `${Math.floor(num / 60)} min ${num % 60} s`;
+            this.onDurationStart.emit(convertTime);
+
+          }
+          else {
+            this.onDurationStart.emit('');
+          }
         }
       });
     }
