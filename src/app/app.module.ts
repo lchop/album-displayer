@@ -18,6 +18,10 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AuthServiceService } from './auth-service.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FooterComponent } from './footer/footer.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { ArticlesPageComponent } from './articles-page/articles-page.component';
 
 
 const firebaseConfig = {
@@ -40,6 +44,10 @@ const firebaseConfig = {
     DescriptionArticlePageComponent,
     LoginComponent,
     PaginateComponent,
+    NavBarComponent,
+    FooterComponent,
+    AboutPageComponent,
+    ArticlesPageComponent,
   ],
   imports: [
     BrowserModule,

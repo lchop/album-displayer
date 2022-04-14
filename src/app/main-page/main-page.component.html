@@ -1,20 +1,50 @@
 
-<div class="bg-black text-white flex justify-center items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect x="32" y="48" width="192" height="160" rx="8" opacity="0.2"></rect><rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="76" y1="96" x2="180" y2="96" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="76" y1="128" x2="180" y2="128" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="76" y1="160" x2="180" y2="160" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
-    <h2 class="flex ml-2" *ngIf="lastArticle; else nothingToShow">
-        Dernier article:
-        <h3 class="ml-2">
-             {{ lastArticle.title }}
-        </h3>
-        
-    </h2>
-    <ng-template #nothingToShow>
-        No articles
-    </ng-template>
+<div class="container max-w-full max-h-full bg-slate-300">
+    <div class="bg-black text-white flex justify-center items-center py-0.5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect x="32" y="48" width="192" height="160" rx="8" opacity="0.2"></rect><rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="76" y1="96" x2="180" y2="96" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="76" y1="128" x2="180" y2="128" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="76" y1="160" x2="180" y2="160" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
+        <h2 class="flex ml-2 text-slate-100" *ngIf="lastArticle; else nothingToShow">
+            Dernier article
+            <h3 class="ml-2">
+                <a routerLink="/description/{{ lastArticle.id }}">
+                    <span class="font-thin text-slate-100">{{ lastArticle.title }}</span>
+                  </a>
+            </h3>
+            
+        </h2>
+        <ng-template #nothingToShow>
+            No articles
+        </ng-template>
+    </div> 
+    <div class="flex items-center justify-center">
+
+    </div>
+    <div class="bg-slate-300 min-h-screen">
+        <div class="max-w-3xl p-12">
+            <h1 class="text-3xl font-semibold text-slate-600 leading-snug bg-slate-200 inline px-4 decoration-clone">
+                <a routerLink="/sachem">Sachem</a> <br>
+                Agence de redaction à votre service <br>
+            </h1>
+            
+        </div>   
+        <div class="flex flex-col justify-center items-center">
+            <div class="max-w-3xl flex items-center justify-center">
+                <h1 class="text-3xl font-semibold text-slate-600 leading-snug">
+                    Ils nous ont fait confiance
+                </h1>
+
+            </div>
+
+            <div class="m-12">
+                <button routerLink="/articles" class="bg-slate-200 hover:bg-slate-400 hover:text-slate-100 text-slate-600 font-bold py-4 px-4 rounded-md">
+                    Travaillez avec nous !
+                </button>
+            </div>
+            
+          
+        </div>
+
+    </div>
 </div>
-<div class="bg-slate-300 min-w-full min-h-screen">
-    <app-articles [currentPage]= "currentAlbumPage"></app-articles>
-    <app-paginate (currentPage)="setCurrentAlbumPage($event)"></app-paginate>
-</div>
+
 
 

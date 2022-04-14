@@ -23,10 +23,13 @@ export class ArticleService {
 
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.articlesUrl + '.json').pipe(
-      map((albums) => {
-        return albums.sort((a, b) => {
-          return b.duration - a.duration;
-        });
+      map((articles) => {
+        console.log(new Date(articles[0].creationDate).getTime());
+        return articles.sort(
+          (a, b) =>
+            new Date(b.creationDate).getTime() -
+            new Date(a.creationDate).getTime()
+        );
       })
     );
   }
@@ -55,6 +58,18 @@ export class ArticleService {
     );
   }
 
+  getLastArticle(): Observable<Article> {
+    return this.http.get<Article[]>(this.articlesUrl + '.json').pipe(
+      map((album) => {
+        return album.sort(
+          (a, b) =>
+            new Date(b.creationDate).getTime() -
+            new Date(a.creationDate).getTime()
+        )[0];
+      })
+    );
+  }
+
   searchArticles(word: string): Observable<Article[]> {
     return this.http.get<Article[]>(this.articlesUrl + '.json').pipe(
       map((album) => {
@@ -67,8 +82,14 @@ export class ArticleService {
 
   paginate(page: number, size: number): Observable<Article[]> {
     return this.http.get<Article[]>(this.articlesUrl + '.json').pipe(
-      map((album) => {
-        return album.slice((page - 1) * size, page * size);
+      map((articles) => {
+        return articles
+          .sort(
+            (a, b) =>
+              new Date(b.creationDate).getTime() -
+              new Date(a.creationDate).getTime()
+          )
+          .slice((page - 1) * size, page * size);
       })
     );
   }

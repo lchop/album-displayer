@@ -3,12 +3,14 @@ import { Article } from '../articles/article.model';
 import { ArticleService } from '../articles/articles.service';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  selector: 'app-articles-page',
+  templateUrl: './articles-page.component.html',
+  styleUrls: ['./articles-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class ArticlesPageComponent implements OnInit {
+
   lastArticle = new Article();
+  currentAlbumPage = 1;
 
   constructor(private articleService: ArticleService) {}
 
@@ -19,4 +21,9 @@ export class MainPageComponent implements OnInit {
         this.lastArticle = article;
       });
   }
+
+  setCurrentAlbumPage(page: number): void {
+    this.currentAlbumPage = page;
+  }
+
 }

@@ -1,0 +1,4 @@
+<div class="bg-slate-300 min-w-full min-h-screen">
+    <app-articles [currentPage]= "currentAlbumPage"></app-articles>
+    <app-paginate (currentPage)="setCurrentAlbumPage($event)"></app-paginate>
+</div>

@@ -4,16 +4,14 @@
       <h2 class="px-1 py-2 font-bold text-gray-600">
         Title: <a routerLink="/description"> <span class="font-thin text-gray-500">{{ article.title }}</span></a>
       </h2>
-      <h2 class="px-1 py-2 font-bold text-gray-600">
-        Name: <span class="font-thin text-gray-500">{{ article.name }}</span>
-      </h2>
+      
       <h2 class="px-1 py-2 font-bold text-gray-600">
         Description:
         <span class="font-thin text-gray-500">{{ article.description }}</span>
       </h2>
       <h2 class="px-1 py-2 font-bold text-gray-600">
         Duration:
-        <span class="font-thin text-gray-500">{{ article.duration }}</span>
+        <span class="font-thin text-gray-500">{{ article.creationDate }}</span>
       </h2>
       <h2 *ngIf="article.like" class="px-1 py-2 font-bold text-gray-600">
         Like: <span class="font-thin text-gray-500">{{ article.like }}</span>
