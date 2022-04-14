@@ -1,12 +1,6 @@
-<div class="container max-w-md mx-auto">
+<div class="container max-w-screen-md mx-auto">
   <div class="pt-4 px-4">
-    <h1 class="font-serif font-extrabold text-center text-slate-800">
-      {{ titlePage }}
-    </h1>
-    <h2 class="font-serif font-bold text-center text-slate-700 mt-2">
-      {{ count }} albums availables
-    </h2>
-    <div class="flex flex-col items-center justify-center pt-2 px-4 mt-4">
+    <div class="flex flex-col items-center justify-center pt-2 px-4 mt-2">
       <form  (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
         <input
           class="font-thin text-slate-500 px-2 py-1 rounded-md"
@@ -41,42 +35,32 @@
     </div>
 </div>
 
-  <div class="py-4 px-4 text-center text-slate-600">
-    <h1 class="font-serif text-center text-slate-700 font-bold uppercase">
-      selected album
-    </h1>
-    <app-album-details
-      *ngIf="selectedAlbum; else elseAlbum"
-      [album]="selectedAlbum"
-    ></app-album-details>
-    <ng-template #elseAlbum> Nothing selected</ng-template>
-  </div>
   <div class="flex items-center justify-center rounded-md">
-    <ul class="grid grid-cols-1 place-content-center max-w-md">
+    <ul class="grid grid-cols-2 grid-rows-1 gap-20 place-content-evenly max-w-screen-xl">
       <li
-        (click)="onClick(album)"
-        class="col-span-1 mb-4 px-4 py-8 bg-slate-100 shadow-md rounded-md"
-        *ngFor="let album of albums"
+        (click)="onClick(article)"
+        class="col-span-1 row-span-1 mb-4 px-4 py-8 bg-slate-100 shadow-md rounded-md"
+        *ngFor="let article of articles"
       >
         <h2 class="px-1 py-2 font-bold text-gray-600">
-          Title: <a routerLink="/description/{{album.id}}"> <span class="font-thin text-gray-500">{{ album.title }}</span></a>
+          Title: <a routerLink="/description/{{article.id}}"> <span class="font-thin text-gray-500">{{ article.title }}</span> </a>
         </h2>
         <h2 class="px-1 py-2 font-bold text-gray-600">
-          Name: <span class="font-thin text-gray-500">{{ album.name }}</span>
+          Name: <span class="font-thin text-gray-500">{{ article.name }}</span>
         </h2>
         <h2 class="px-1 py-2 font-bold text-gray-600">
           Description:
-          <span class="font-thin text-gray-500">{{ album.description }}</span>
+          <span class="font-thin text-gray-500">{{ article.description }}</span>
         </h2>
         <h2 class="px-1 py-2 font-bold text-gray-600">
           Duration:
-          <span class="font-thin text-gray-500">{{ album.duration }}</span>
+          <span class="font-thin text-gray-500">{{ article.duration }}</span>
         </h2>
-        <h2 *ngIf="album.like" class="px-1 py-2 font-bold text-gray-600">
-          Like: <span class="font-thin text-gray-500">{{ album.like }}</span>
+        <h2 *ngIf="article.like" class="px-1 py-2 font-bold text-gray-600">
+          Like: <span class="font-thin text-gray-500">{{ article.like }}</span>
         </h2>
-        <h2 *ngIf="album.tags" class="px-1 py-2 font-bold text-gray-600">
-          Tags: <span class="font-thin text-gray-500">{{ album.tags }}</span>
+        <h2 *ngIf="article.tags" class="px-1 py-2 font-bold text-gray-600">
+          Tags: <span class="font-thin text-gray-500">{{ article.tags }}</span>
         </h2>
       </li>
     </ul>

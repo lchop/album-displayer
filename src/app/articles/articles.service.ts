@@ -1,29 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Album } from './album.model';
-import { ALBUMS, ALBUM_LISTS, List } from './mock-albums';
+import { Article, List } from './article.model';
 import { Observable, Subject, map, find } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AlbumService {
+export class ArticleService {
   constructor(private http: HttpClient) {}
 
   sendCurrentNumberPage = new Subject<number>();
 
   // convention dans l'API ajoutez votre identifant de base de données
-  private albumsUrl =
+  private articlesUrl =
     'https://t20-label-default-rtdb.europe-west1.firebasedatabase.app/albums';
-  private albumListsUrl =
+  private articleListsUrl =
     'https://t20-label-default-rtdb.europe-west1.firebasedatabase.app/albumLists';
 
   currentPage(page: number) {
     return this.sendCurrentNumberPage.next(page);
   }
 
-  getAlbums(): Observable<Album[]> {
-    return this.http.get<Album[]>(this.albumsUrl + '.json').pipe(
+  getArticles(): Observable<Article[]> {
+    return this.http.get<Article[]>(this.articlesUrl + '.json').pipe(
       map((albums) => {
         return albums.sort((a, b) => {
           return b.duration - a.duration;
@@ -32,32 +31,32 @@ export class AlbumService {
     );
   }
 
-  getAlbum(id: string): Observable<Album> {
-    return this.http.get<Album>(this.albumsUrl + `/${id}.json`).pipe(
+  getArticle(id: string): Observable<Article> {
+    return this.http.get<Article>(this.articlesUrl + `/${id}.json`).pipe(
       map((album) => {
         return album;
       }) // JSON
     );
   }
 
-  getAlbumList(id: string): Observable<string[] | undefined> {
-    return this.http.get<List>(this.albumListsUrl + `/${id}.json`).pipe(
+  getArticleList(id: string): Observable<string[] | undefined> {
+    return this.http.get<List>(this.articleListsUrl + `/${id}.json`).pipe(
       map((album) => {
         return album.list;
       }) // JSON
     );
   }
 
-  getCountAlbums(): Observable<number> {
-    return this.http.get<Album[]>(this.albumsUrl + '.json').pipe(
+  getCountArticles(): Observable<number> {
+    return this.http.get<Article[]>(this.articlesUrl + '.json').pipe(
       map((album) => {
         return album.length;
       }) // JSON
     );
   }
 
-  searchAlbums(word: string): Observable<Album[]> {
-    return this.http.get<Album[]>(this.albumsUrl + '.json').pipe(
+  searchArticles(word: string): Observable<Article[]> {
+    return this.http.get<Article[]>(this.articlesUrl + '.json').pipe(
       map((album) => {
         return album.filter((album) =>
           album.title.toLowerCase().includes(word.toLowerCase())
@@ -66,8 +65,8 @@ export class AlbumService {
     );
   }
 
-  paginate(page: number, size: number): Observable<Album[]> {
-    return this.http.get<Album[]>(this.albumsUrl + '.json').pipe(
+  paginate(page: number, size: number): Observable<Article[]> {
+    return this.http.get<Article[]>(this.articlesUrl + '.json').pipe(
       map((album) => {
         return album.slice((page - 1) * size, page * size);
       })

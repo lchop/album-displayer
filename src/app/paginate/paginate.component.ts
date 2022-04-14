@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AlbumService } from '../albums/album.service';
+import { ArticleService } from '../articles/articles.service';
 
 
 @Component({
@@ -15,12 +15,12 @@ export class PaginateComponent implements OnInit {
   
   @Output() currentPage: EventEmitter<number> = new EventEmitter();
 
-  constructor(private albumService: AlbumService) {
-    albumService.sendCurrentNumberPage.subscribe(numberPage => {this.perPage});
-   }
+  constructor(private articleService: ArticleService) { 
+    articleService.sendCurrentNumberPage.subscribe(numberPage => {this.perPage});
+  }
 
   ngOnInit(): void {
-    this.albumService.getCountAlbums().subscribe(count => this.max_page = count / this.perPage);
+    this.articleService.getCountArticles().subscribe(count => this.max_page = count / this.perPage);
   }
   
   next() {

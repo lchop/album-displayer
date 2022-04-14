@@ -1,27 +1,26 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { interval, Observable, Subscription, take } from 'rxjs';
-import { Album } from './album.model';
-import { AlbumService } from './album.service';
+import { Article } from './article.model';
+import { ArticleService } from './articles.service';
 
 @Component({
-  selector: 'app-albums',
-  templateUrl: './albums.component.html',
-  styleUrls: ['./albums.component.scss'],
+  selector: 'app-articles',
+  templateUrl: './articles.component.html',
 })
-export class AlbumsComponent implements OnInit {
-  albums!: Album[];
+export class ArticlesComponent implements OnInit {
+  articles!: Article[];
 
   @Input() set currentPage(value: number) {
-    this.albumService
+    this.articleService
       .paginate(value, 2)
-      .subscribe((albums) => (this.albums = albums));
+      .subscribe((articles) => (this.articles = articles));
   }
-  @Output() onPlay: EventEmitter<Album> = new EventEmitter();
+  @Output() onPlay: EventEmitter<Article> = new EventEmitter();
   @Output() onDurationStart: EventEmitter<string> = new EventEmitter();
 
   titlePage: string = '- Albums Music -';
-  selectedAlbum!: Album;
+  selectedAlbum!: Article;
 
   observableDuration$!: Observable<number>;
 
@@ -31,29 +30,29 @@ export class AlbumsComponent implements OnInit {
 
   subscription!: Subscription;
 
-  constructor(private albumService: AlbumService) {}
+  constructor(private articleService: ArticleService) {}
 
   ngOnInit(): void {
-    this.albumService
-      .getCountAlbums()
+    this.articleService
+      .getCountArticles()
       .subscribe((count) => (this.count = count));
   }
 
   onTyping(event: any) {
     if (event.target.value.length > 0) {
-      this.albumService
-        .searchAlbums(event.target.value)
-        .subscribe((albums) => (this.albums = albums));
-      this.searchFound = this.albums.length;
+      this.articleService
+        .searchArticles(event.target.value)
+        .subscribe((articles) => (this.articles = articles));
+      this.searchFound = this.articles.length;
     } else {
-      this.albumService
-        .getAlbums()
-        .subscribe((albums) => (this.albums = albums));
+      this.articleService
+        .getArticles()
+        .subscribe((articles) => (this.articles = articles));
       this.searchFound = 0;
     }
   }
 
-  onClick(album: Album): void {
+  onClick(album: Article): void {
     this.selectedAlbum = album;
     this.observableDuration$ = interval(1000).pipe(
       take(this.selectedAlbum.duration + 1)
@@ -77,21 +76,21 @@ export class AlbumsComponent implements OnInit {
 
   onSubmit(albumName: NgForm): void {
     if (albumName.value['word'] !== '') {
-      this.albumService
-        .searchAlbums(albumName.value['word'])
-        .subscribe((albums) => (this.albums = albums));
-      if (this.albums.length > 0) {
-        this.searchFound = this.albums.length;
+      this.articleService
+        .searchArticles(albumName.value['word'])
+        .subscribe((articles) => (this.articles = articles));
+      if (this.articles.length > 0) {
+        this.searchFound = this.articles.length;
       } else {
-        this.albumService
-          .getAlbums()
-          .subscribe((albums) => (this.albums = albums));
+        this.articleService
+          .getArticles()
+          .subscribe((articles) => (this.articles = articles));
         this.searchFound = 0;
       }
     } else {
-      this.albumService
-        .getAlbums()
-        .subscribe((albums) => (this.albums = albums));
+      this.articleService
+        .getArticles()
+        .subscribe((articles) => (this.articles = articles));
       this.searchFound = 0;
     }
   }

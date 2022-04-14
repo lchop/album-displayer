@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Album } from '../albums/album.model';
+import { Article } from '../articles/article.model';
 
 @Component({
   selector: 'app-main-page',
@@ -8,9 +7,8 @@ import { Album } from '../albums/album.model';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-  albumPlaying = {} as Album;
+  lastArticle = {} as Article;
   currentAlbumPage = 1;
-  durationPlay = '';
 
   constructor() {}
 
@@ -20,13 +18,4 @@ export class MainPageComponent implements OnInit {
   setCurrentAlbumPage(page: number): void {
     this.currentAlbumPage = page;
   }
-
-  onPlay(event: Album): void {
-    this.albumPlaying = event;
-  }
-
-  onDurationStart(event: string): void {
-    this.durationPlay = event;
-  }
-
 }

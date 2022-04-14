@@ -1,4 +1,4 @@
-export class Album {
+export class Article {
   id!: string;
   ref!: string;
   name!: string;
@@ -11,3 +11,8 @@ export class Album {
   like?: string;
   [key: string]: string | number | string[] | undefined;
 }
+
+export type List = {
+  id: string,
+  list: string[]
+};

@@ -1,0 +1,27 @@
+<div class="bg-slate-300 py-8 px-4 flex flex-col min-w-screen min-h-screen">
+  <h1 class="font-extrabold text-slate-500">- Articles details -</h1>
+    <div class="flex flex-col justify-start">
+      <h2 class="px-1 py-2 font-bold text-gray-600">
+        Title: <a routerLink="/description"> <span class="font-thin text-gray-500">{{ article.title }}</span></a>
+      </h2>
+      <h2 class="px-1 py-2 font-bold text-gray-600">
+        Name: <span class="font-thin text-gray-500">{{ article.name }}</span>
+      </h2>
+      <h2 class="px-1 py-2 font-bold text-gray-600">
+        Description:
+        <span class="font-thin text-gray-500">{{ article.description }}</span>
+      </h2>
+      <h2 class="px-1 py-2 font-bold text-gray-600">
+        Duration:
+        <span class="font-thin text-gray-500">{{ article.duration }}</span>
+      </h2>
+      <h2 *ngIf="article.like" class="px-1 py-2 font-bold text-gray-600">
+        Like: <span class="font-thin text-gray-500">{{ article.like }}</span>
+      </h2>
+      <h2 *ngIf="article.tags" class="px-1 py-2 font-bold text-gray-600">
+        Tags: <span class="font-thin text-gray-500">{{ article.tags }}</span>
+      </h2>
+    </div>
+    
+    
+</div>

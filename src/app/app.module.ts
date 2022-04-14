@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AlbumsComponent } from './albums/albums.component';
-import { AlbumDetailsComponent } from './album-details/album-details.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { FormsModule } from '@angular/forms';
-import { DescriptionAlbumPageComponent } from './description-album-page/description-album-page.component';
+import { DescriptionArticlePageComponent } from './description-article-page/description-article-page.component';
 import { LoginComponent } from './login/login.component';
 import { PaginateComponent } from './paginate/paginate.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +17,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { environment } from '../environments/environment';
 import { AuthServiceService } from './auth-service.service';
 
 
@@ -35,10 +34,10 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    AlbumsComponent,
-    AlbumDetailsComponent,
+    ArticlesComponent,
+    ArticleDetailsComponent,
     MainPageComponent,
-    DescriptionAlbumPageComponent,
+    DescriptionArticlePageComponent,
     LoginComponent,
     PaginateComponent,
   ],
