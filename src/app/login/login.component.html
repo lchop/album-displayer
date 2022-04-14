@@ -1,29 +1,64 @@
-<div class="bg-slate-300 py-8 px-4 flex flex-col min-w-screen min-h-screen items-center justify-center">
-    <div class="container max-w-md ">
-        <div class="bg-white shadow-md rounded-mdng  px-8 pt-6 pb-8 mb-4 flex flex-col">
-            <div class="mb-4">
-              <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
-                Username
-              </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text" placeholder="Username">
-            </div>
-            <div class="mb-6">
-              <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
-                Password
-              </label>
-              <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" placeholder="******************">
-              <p class="text-red text-xs italic">Please choose a password.</p>
-            </div>
-            <div class="flex items-center justify-between">
-              <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="button">
-                Sign In
-              </button>
-              <a class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
-                Forgot Password?
-              </a>
-            </div>
+<div
+  class="bg-slate-300 py-8 px-4 flex flex-col min-w-screen min-h-screen items-center justify-center"
+>
+  <div class="container max-w-md">
+    <div
+      class="bg-white shadow-xl rounded-md px-8 pt-6 pb-8 mb-4 flex flex-col"
+    >
+      <form *ngIf="!loginSucess; else logIn" (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
+        <div class="mb-4">
+          <label
+            class="block text-grey-darker text-sm font-bold mb-2"
+            for="username"
+          >
+            Username
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+            name="username"
+            id="username"
+            type="text"
+            placeholder="Username"
+            aria-label="Username"
+            [(ngModel)]="username"
+          />
         </div>
-
+        <div class="mb-6">
+          <label
+            class="block text-grey-darker text-sm font-bold mb-2"
+            for="password"
+          >
+            Password
+          </label>
+          <input
+            class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
+            name="password"
+            id="password"
+            type="password"
+            placeholder="******************"
+            aria-label="Password"
+            [(ngModel)]="password"
+          />
+          <p class="text-red text-xs italic">Please choose a password.</p>
+          <button
+            [disabled]="formSearch.invalid"
+            class="mt-6 bg-slate-500 hover:bg-slate-600 text-white font-thin ml-2 py-2 px-4 rounded-xl"
+            type="submit"
+          >
+            Log In
+          </button>
+        </div>
+      </form>
+      <ng-template #logIn>
+        <div class="text-center">
+          <h1 class="text-2xl font-bold mb-4">Login Success</h1>
+          <p class="text-sm">
+            You are now logged in.</p>
+          <p class="text-sm">
+             You can now go back to the <a class="underline" routerLink="/">home page</a>.
+          </p>
+        </div>
+      </ng-template>
     </div>
-    
+  </div>
 </div>
