@@ -86,6 +86,26 @@ module.exports = {
           }
         }
       },
+      fontFamily: {
+        'sans' : ['Barlow', 'Helvetica', 'Arial', 'sans-serif'],
+        'title' : ['Noto Sans', 'Helvetica', 'Arial', 'sans-serif']
+        },
+        width: {
+          '112' : '28rem',
+          '138' : '32rem',
+          '164' : '36rem',
+          '246' : '54rem'
+        },
+        maxWidth: {
+          '246' : '54rem'
+        },
+        height: {
+          '112' : '28rem',
+          '138' : '32rem',
+        },
+        lineHeight: {
+          '12' : '3rem'
+        }
     },
   },
   plugins: [],
