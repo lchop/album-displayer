@@ -22,6 +22,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { ArticlesPageComponent } from './articles-page/articles-page.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 
 const firebaseConfig = {
@@ -48,6 +49,7 @@ const firebaseConfig = {
     FooterComponent,
     AboutPageComponent,
     ArticlesPageComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,

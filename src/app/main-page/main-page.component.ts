@@ -10,6 +10,13 @@ import { ArticleService } from '../articles/articles.service';
 export class MainPageComponent implements OnInit {
   lastArticle = new Article();
 
+  public slides = [
+    { src: "/assets/images/greenMag.jpeg" },
+    { src: "/assets/images/guyaMag.png" },
+    { src: "/assets/images/greenMag.jpeg" },
+    { src: "/assets/images/guyaMag.png" }
+  ];
+
   constructor(private articleService: ArticleService) {}
 
   ngOnInit(): void {
