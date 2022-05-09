@@ -3,7 +3,8 @@
     <div class="flex flex-col items-center justify-center pt-2 px-4">
       <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
         <input
-          class="font-thin text-slate-500 px-2 py-1 rounded-md"
+          class="font-thin text-secondary-600 px-2 py-2 outline-none focus:ring-primary-200 focus:ring-2 rounded-md placeholder-primary-200 bg-white"
+
           (keyup)="onTyping($event)"
           name="word"
           type="text"
@@ -12,7 +13,7 @@
         />
         <button
           [disabled]="formSearch.invalid"
-          class="bg-slate-500 hover:bg-slate-600 text-white font-thin ml-2 py-1 px-2 rounded-xl"
+          class="bg-secondary-500 hover:bg-secondary-600 text-secondary-50 font-sans ml-2 py-2 px-4 rounded-xl"
           type="submit"
         >
           Search
@@ -20,15 +21,15 @@
       </form>
       <div *ngIf="searchFound > 0; else nothingFound">
         <div class="flex items-center justify-center py-4 px-4">
-          <h2 class="font-serif font-bold text-center text-slate-700">
-            {{ searchFound }} articles found
+          <h2 class="font-sans font-bold text-center text-primary-700">
+            {{ searchFound }} articles trouvés
           </h2>
         </div>
       </div>
       <ng-template #nothingFound>
         <div class="flex items-center justify-center py-4 px-4">
-          <h2 class="font-serif font-bold text-center text-slate-700">
-            No articles found
+          <h2 class="font-sans font-bold text-center text-primary-700">
+            Aucun article trouvés
           </h2>
         </div>
       </ng-template>
@@ -40,28 +41,28 @@
       class="grid grid-cols-2 grid-rows-1 gap-20 place-content-evenly max-w-screen-xl"
     >
       <li
-        class="col-span-1 row-span-1 mb-4 px-4 py-8 bg-slate-100 shadow-md rounded-md"
+        class="col-span-1 row-span-1 mb-4 px-4 py-8 bg-white shadow-md rounded-md"
         *ngFor="let article of articles"
       >
-        <h2 class="px-1 py-2 font-bold text-gray-600">
-          Title:
+        <h2 class="px-1 py-2 font-bold text-primary-800">
+          Titre:
           <a routerLink="/description/{{ article.id }}">
-            <span class="font-thin text-gray-500">{{ article.title }}</span>
+            <span class="font-thin text-primary-500">{{ article.title }}</span>
           </a>
         </h2>
-        <h2 class="px-1 py-2 font-bold text-gray-600">
+        <h2 class="px-1 py-2 font-bold text-primary-800">
           Description:
-          <span class="font-thin text-gray-500">{{ article.description }}</span>
+          <span class="font-thin text-primary-500">{{ article.description }}</span>
         </h2>
-        <h2 class="px-1 py-2 font-bold text-gray-600">
-          Duration:
-          <span class="font-thin text-gray-500">{{ article.creationDate | date :'dd/MM/YYYY' }}</span>
+        <h2 class="px-1 py-2 font-bold text-primary-800">
+          Date:
+          <span class="font-thin text-primary-500">{{ article.creationDate | date :'dd/MM/YYYY' }}</span>
         </h2>
-        <h2 *ngIf="article.like" class="px-1 py-2 font-bold text-gray-600">
-          Like: <span class="font-thin text-gray-500">{{ article.like }}</span>
+        <h2 *ngIf="article.like" class="px-1 py-2 font-bold text-primary-800">
+          Like: <span class="font-thin text-primary-500">{{ article.like }}</span>
         </h2>
-        <h2 *ngIf="article.tags" class="px-1 py-2 font-bold text-gray-600">
-          Tags: <span class="font-thin text-gray-500">{{ article.tags }}</span>
+        <h2 *ngIf="article.tags" class="px-1 py-2 font-bold text-primary-800">
+          Tags: <span class="font-thin text-primary-500">{{ article.tags }}</span>
         </h2>
       </li>
     </ul>

@@ -21,10 +21,11 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm) {
     let result = this.auth.signIn(form.value['username'], form.value['password']);
     result.then(res => {
-      if(res)
-      {
-        this.loginSucess = true;
-      }
+      this.auth.isLogIn$.subscribe(loggedIn => {
+        if (loggedIn) {
+          this.loginSucess = true;
+        }
+      })
     });
     this.username = '';
     this.password = '';
