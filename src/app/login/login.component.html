@@ -7,7 +7,7 @@
         class="container bg-primary-100 shadow-xl rounded-md px-8 pt-6 pb-8 mb-4"
       >
         <form
-          *ngIf="!loginSucess; else logIn"
+          *ngIf="!(loginSucess$ | async); else logIn"
           (ngSubmit)="onSubmit(formSearch)"
           #formSearch="ngForm"
         >
