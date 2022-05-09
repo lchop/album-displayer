@@ -56,14 +56,17 @@
           </div>
         </form>
         <ng-template #logIn>
-          <div class="text-center">
-            <h1 class="text-2xl font-bold mb-4">Login Success</h1>
-            <p class="text-sm">You are now logged in.</p>
-            <p class="text-sm">
-              You can now go back to the
-              <a class="underline" routerLink="/">home page</a>.
-            </p>
+          <div class="flex items-center justify-center mt-8">
+            <div class="text-center">
+              <h1 class="text-primary-700 text-3xl font-bold">
+                Welcome {{ (user$ | async)?.email }}
+              </h1>
+              <p class="text-primary-600 text-xl font-bold mt-4">
+                You are logged in
+              </p>
+            </div>
           </div>
+          
         </ng-template>
       </div>
     </div>
