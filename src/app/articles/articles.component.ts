@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
+import { AuthService } from '../auth.service';
 import { Article } from './article.model';
 import { ArticleService } from './articles.service';
 

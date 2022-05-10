@@ -6,14 +6,15 @@ import {} from 'firebase/app';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
 export interface User {
-  email: string;
+  email: string | null;
+  idToken: string | null;
 } ;
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user : User = {email: ""};
+  user : User = {email: null, idToken: null};
   private subject = new BehaviorSubject<User>(null);
   user$ : Observable<User> = this.subject.asObservable();
   isLogIn$: Observable<boolean>;
@@ -29,7 +30,10 @@ export class AuthService {
       (user) => {      
         if (user) {
           this.user.email = user.email;
-          this.subject.next(this.user);
+          user.getIdToken().then((idToken) => {
+            this.user.idToken = idToken;
+            this.subject.next(this.user);
+          });          
         } else { 
           this.subject.next(null);
         }
@@ -45,8 +49,11 @@ export class AuthService {
       .then((result) => {
         if (result.user?.email) {
           this.user.email = result.user.email;
-          this.subject.next(this.user);
-        }      
+          result.user.getIdToken().then((idToken) => {
+            this.user.idToken = idToken;   
+            this.subject.next(this.user);
+          });
+        }   
         return result;
       })
       .catch((error) => {

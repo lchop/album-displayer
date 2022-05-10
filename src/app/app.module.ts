@@ -27,14 +27,14 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBp8QDpmJEea4vC13cOekVZEHjQb9JzBsk",
-  authDomain: "t20-label.firebaseapp.com",
-  databaseURL: "https://t20-label-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "t20-label",
-  storageBucket: "t20-label.appspot.com",
-  messagingSenderId: "415399098209",
-  appId: "1:415399098209:web:62af2bca670bb6c8727720",
-  measurementId: "G-P333CJDLTY"
+    apiKey: "AIzaSyA_qMTzXvNHhR4FQlPuazr5NC9Cmo4gwlw",
+    authDomain: "sachem-fcd12.firebaseapp.com",
+    databaseURL: "https://sachem-fcd12-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "sachem-fcd12",
+    storageBucket: "sachem-fcd12.appspot.com",
+    messagingSenderId: "44609888106",
+    appId: "1:44609888106:web:390916816d50e3e5cd0f13",
+    measurementId: "G-QVNQXHPHDS"
 };
 
 @NgModule({
