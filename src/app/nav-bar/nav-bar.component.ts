@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthServiceService } from '../auth-service.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +10,7 @@ export class NavBarComponent implements OnInit {
   loggedIn = false;
   logInName= '';
 
-  constructor(private auth: AuthServiceService) {
+  constructor(private auth: AuthService) {
     this.auth.isLogIn$.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
       if (loggedIn) {

@@ -17,7 +17,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { AuthServiceService } from './auth-service.service';
+import { AuthService } from './auth.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutPageComponent } from './about-page/about-page.component';
@@ -64,7 +64,7 @@ const firebaseConfig = {
     AngularFireStorageModule,
     AngularFireDatabaseModule,
   ],
-  providers: [AuthServiceService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

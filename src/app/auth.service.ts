@@ -12,8 +12,8 @@ export interface User {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
-  test : User = {email: ""};
+export class AuthService {
+  user : User = {email: ""};
   private subject = new BehaviorSubject<User>(null);
   user$ : Observable<User> = this.subject.asObservable();
   isLogIn$: Observable<boolean>;
@@ -25,6 +25,15 @@ export class AuthServiceService {
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
+    this.afAuth.authState.subscribe(
+      (user) => {      
+        if (user) {
+          this.user.email = user.email;
+          this.subject.next(this.user);
+        } else { 
+          this.subject.next(null);
+        }
+      });
       this.isLogIn$ = this.user$.pipe(map(user => !!user));
       this.isLogOut$ = this.isLogIn$.pipe(map(loggedIn => !loggedIn));
   }
@@ -35,8 +44,8 @@ export class AuthServiceService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         if (result.user?.email) {
-          this.test.email = result.user.email;
-          this.subject.next(this.test);
+          this.user.email = result.user.email;
+          this.subject.next(this.user);
         }      
         return result;
       })
