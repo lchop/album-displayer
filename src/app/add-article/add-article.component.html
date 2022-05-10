@@ -1,0 +1,58 @@
+
+<form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
+  <div class="mb-4">
+    <label class="block text-primary-700 text-sm font-bold mb-2" for="username">
+      Titre *
+    </label>
+    <input
+      class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
+      name="title"
+      id="title"
+      type="text"
+      placeholder="Titre"
+      aria-label="Tilte"
+      required
+      [(ngModel)]="title"
+    />
+  </div>
+  <div class="mb-4">
+    <label class="block text-primary-700 text-sm font-bold mb-2" for="password">
+      Description *
+    </label>
+    <textarea
+      class=" justify-start w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100 h-96 overflow-y-scroll"
+      name="content"
+      required
+      id="content"
+      type="content"
+      placeholder="Entrer une description de votre article"
+      aria-label="Content"
+      [(ngModel)]="content"
+    ></textarea>
+  </div>
+  <div class="mb-4">
+    <label class="block text-primary-700 text-sm font-bold mb-2" for="password">
+        Date de creation *
+      </label>
+      <input
+        class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
+        name="date"
+        required
+        id="date"
+        min="2018-01-01"
+        max="2030-12-31"
+        type="date"
+        aria-label="Date"
+        [(ngModel)]="date"
+      />
+  </div>
+  <div class="flex items-center justify-center my-8">
+    <button
+      [disabled]="formSearch.invalid"
+      class="bg-primary-500 hover:bg-primary-600 text-white font-thin py-2 px-4 rounded-xl"
+      type="submit"
+    >
+      Add article
+    </button>
+  </div>
+</form>

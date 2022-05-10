@@ -24,6 +24,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { ArticlesPageComponent } from './articles-page/articles-page.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { AddArticleComponent } from './add-article/add-article.component';
 
 
 const firebaseConfig = {
@@ -52,6 +53,7 @@ const firebaseConfig = {
     ArticlesPageComponent,
     CarouselComponent,
     ContactPageComponent,
+    AddArticleComponent,
   ],
   imports: [
     BrowserModule,

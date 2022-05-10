@@ -9,7 +9,6 @@ import { AuthService, User } from '../auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
   username :string ='';
   password :string ='';
   loginSucess$ : Observable<boolean>;
@@ -30,4 +29,5 @@ export class LoginComponent {
   onLogout() {
     this.auth.signOut();
   }
+
 }

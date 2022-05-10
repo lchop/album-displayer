@@ -2,12 +2,12 @@
   <div
     class=" bg-primary-50 py-8 px-4 flex flex-col min-w-screen min-h-screen items-center justify-center"
   >
-    <div class="container max-w-md">
+    <div class="container max-w-lg">
       <div
+        *ngIf="!(loginSucess$ | async); else logIn"
         class="container bg-primary-100 shadow-xl rounded-md px-8 pt-6 pb-8 mb-4"
       >
         <form
-          *ngIf="!(loginSucess$ | async); else logIn"
           (ngSubmit)="onSubmit(formSearch)"
           #formSearch="ngForm"
         >
@@ -55,15 +55,14 @@
             </button>
           </div>
         </form>
+      </div>
         <ng-template #logIn>
-          <div class="flex items-center justify-center mt-8">
+          <div class="flex items-center justify-center">
             <div class="text-center">
-              <h1 class="text-primary-700 text-3xl font-bold">
+              <h1 class="text-primary-700 text-3xl font-bold mb-8">
                 Welcome {{ (user$ | async)?.email }}
               </h1>
-              <p class="text-primary-600 text-xl font-bold mt-4">
-                You are logged in
-              </p>
+              <app-add-article></app-add-article>
               <a
               class=" text-primary-500 hover:text-primary-500 font-thin underline mt-4 cursor-pointer justify-end"
               (click)="onLogout()"
@@ -77,4 +76,3 @@
       </div>
     </div>
   </div>
-</div>
