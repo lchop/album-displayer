@@ -41,8 +41,7 @@ export class ArticlesComponent implements OnInit {
       .subscribe((count) => {
         this.count = count;
         this.searchFound = count;
-      }
-        );
+      });
   }
 
   onTyping(event: any) {

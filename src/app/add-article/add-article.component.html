@@ -21,13 +21,13 @@
     </label>
     <textarea
       class=" justify-start w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100 h-96 overflow-y-scroll"
-      name="content"
+      name="description"
       required
-      id="content"
-      type="content"
+      id="description"
+      type="description"
       placeholder="Entrer une description de votre article"
-      aria-label="Content"
-      [(ngModel)]="content"
+      aria-label="Description"
+      [(ngModel)]="description"
     ></textarea>
   </div>
   <div class="mb-4">
@@ -36,14 +36,14 @@
       </label>
       <input
         class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
-        name="date"
+        name="creationDate"
         required
-        id="date"
+        id="creationDate"
         min="2018-01-01"
         max="2030-12-31"
-        type="date"
-        aria-label="Date"
-        [(ngModel)]="date"
+        type="creationDate"
+        aria-label="CreationDate"
+        [(ngModel)]="creationDate"
       />
   </div>
   <div class="flex items-center justify-center my-8">

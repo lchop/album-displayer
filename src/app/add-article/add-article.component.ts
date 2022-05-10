@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { NgForm } from '@angular/forms';
 import { map, Observable } from 'rxjs';
+import { Article } from '../articles/article.model';
+import { ArticleService } from '../articles/articles.service';
 
 @Component({
   selector: 'app-add-article',
@@ -10,26 +12,32 @@ import { map, Observable } from 'rxjs';
 })
 export class AddArticleComponent implements OnInit {
 
+  id ='';
+  status = '';
   title = '';
-  content= '';
-  date = new Date();
+  description= '';
+  creationDate = new Date();
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private articleService: ArticleService) {
+    this.articleService.getCountArticles().subscribe((count) => {
+      this.id = count.toString();
+      console.log(this.id);
+    });
+   }
 
   ngOnInit(): void {
-
-    this.getMessages().subscribe(data => {
-      console.log(data);
-    });
-  }
-
-  getMessages(): Observable<any> {
-    let test = this.db.list('articles');
-    return test.valueChanges();
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
+    console.log(this.id);
+    
+    const itemsRef = this.db.list(`articles`);
+    const newArticle : Article = {'id' : this.id,
+                                'status' : 'Published',
+                                'title' : form.value['title'], 
+                                'description': form.value['description'], 
+                                'creationDate': form.value['creationDate']};
+    itemsRef.set(this.id, newArticle);
   }
 
 }
