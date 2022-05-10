@@ -3,6 +3,7 @@ import { Article, List } from './article.model';
 import { Observable, Subject, map, find } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Injectable({
   providedIn: 'root',
@@ -10,20 +11,13 @@ import { AuthService } from '../auth.service';
 export class ArticleService {
   idToken: string;
 
-  constructor(private http: HttpClient, private auth: AuthService) {
+  constructor(private auth: AuthService, private db: AngularFireDatabase) {
     this.auth.user$.subscribe((user) => {
       this.idToken = user?.idToken;
-      console.log(user);
     });
   }
 
   sendCurrentNumberPage = new Subject<number>();
-
-  // convention dans l'API ajoutez votre identifant de base de données
-  private articlesUrl =
-    'https://sachem-fcd12-default-rtdb.europe-west1.firebasedatabase.app/articles';
-  private articleListsUrl =
-    'https://sachem-fcd12-default-rtdb.europe-west1.firebasedatabase.app/articlelists';
 
   currentPage(page: number) {
     return this.sendCurrentNumberPage.next(page);
@@ -31,7 +25,7 @@ export class ArticleService {
 
   getArticles(): Observable<Article[]> {
     // return this.http.get<Article[]>(this.articlesUrl + `.json?auth=${this.idToken}`).pipe(
-    return this.http.get<Article[]>(this.articlesUrl + `.json`).pipe(
+    return this.db.list<Article>('articles').valueChanges().pipe(
       map((articles) => {
         return articles.sort(
           (a, b) =>
@@ -42,24 +36,16 @@ export class ArticleService {
     );
   }
 
-  getArticle(id: string): Observable<Article> {
-    return this.http.get<Article>(this.articlesUrl + `/${id}.json`).pipe(
-      map((album) => {
-        return album;
-      }) // JSON
-    );
-  }
-
-  getArticleList(id: string): Observable<string[] | undefined> {
-    return this.http.get<List>(this.articleListsUrl + `/${id}.json`).pipe(
-      map((album) => {
-        return album.list;
-      }) // JSON
-    );
-  }
+  // getArticle(id: string): Observable<Article> {
+  //   return this.db.object<Article>(`articles/${id}`).valueChanges().pipe(
+  //     map((album) => {
+  //       return album;
+  //     }) // JSON
+  //   );
+  // }
 
   getCountArticles(): Observable<number> {
-    return this.http.get<Article[]>(this.articlesUrl + `.json`).pipe(
+    return this.db.list<Article>('articles').valueChanges().pipe(
       map((album) => {
         return album.length;
       }) // JSON
@@ -67,7 +53,7 @@ export class ArticleService {
   }
 
   getLastArticle(): Observable<Article> {
-    return this.http.get<Article[]>(this.articlesUrl + `.json`).pipe(
+    return this.db.list<Article>('articles').valueChanges().pipe(
       map((album) => {
         return album.sort(
           (a, b) =>
@@ -79,7 +65,7 @@ export class ArticleService {
   }
 
   searchArticles(word: string): Observable<Article[]> {
-    return this.http.get<Article[]>(this.articlesUrl + `.json`).pipe(
+    return this.db.list<Article>('articles').valueChanges().pipe(
       map((album) => {
         return album.filter((album) =>
           album.title.toLowerCase().includes(word.toLowerCase())
@@ -89,7 +75,7 @@ export class ArticleService {
   }
 
   paginate(page: number, size: number): Observable<Article[]> {
-    return this.http.get<Article[]>(this.articlesUrl + `.json`).pipe(
+    return this.db.list<Article>('articles').valueChanges().pipe(
       map((articles) => {
         return articles
           .sort(

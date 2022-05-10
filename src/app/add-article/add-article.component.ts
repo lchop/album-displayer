@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { NgForm } from '@angular/forms';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-article',
@@ -12,10 +14,18 @@ export class AddArticleComponent implements OnInit {
   content= '';
   date = new Date();
 
-  constructor() { }
+  constructor(private db: AngularFireDatabase) { }
 
   ngOnInit(): void {
 
+    this.getMessages().subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  getMessages(): Observable<any> {
+    let test = this.db.list('articles');
+    return test.valueChanges();
   }
 
   onSubmit(form: NgForm) {

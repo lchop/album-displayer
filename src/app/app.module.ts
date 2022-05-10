@@ -4,10 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticlesComponent } from './articles/articles.component';
-import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { FormsModule } from '@angular/forms';
-import { DescriptionArticlePageComponent } from './description-article-page/description-article-page.component';
 import { LoginComponent } from './login/login.component';
 import { PaginateComponent } from './paginate/paginate.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -42,9 +40,7 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     ArticlesComponent,
-    ArticleDetailsComponent,
     MainPageComponent,
-    DescriptionArticlePageComponent,
     LoginComponent,
     PaginateComponent,
     NavBarComponent,
