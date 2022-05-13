@@ -89,17 +89,18 @@ export class ArticleService {
   }
 
   deleteArticle(article: Article): void {
-    this.db.object(`articles/${article.id}`).remove();
-    this.getArticles().subscribe((articles) => {
-      articles.forEach(element => {
+    const itemsRef = this.db.list<Article>(`articles`);
+    itemsRef.remove(article.id);
+    itemsRef.valueChanges().subscribe((articles) => {
+      articles.forEach((element) => {
         if (element.id > article.id) {
-          const itemsRef = this.db.list(`articles`);
-          let newId = (Number(element.id)-1).toString();
+          const newId = (Number(element.id)-1).toString();
           itemsRef.remove(element.id);
+          element.id = newId;
           itemsRef.set(newId, element);
-          itemsRef.update(newId, {id: Number(element.id)-1});
-          }
+        }
       });
     });
   }
+          
 }
