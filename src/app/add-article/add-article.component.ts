@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { NgForm } from '@angular/forms';
@@ -18,7 +19,8 @@ export class AddArticleComponent implements OnInit {
   description= '';
   creationDate = new Date();
 
-  constructor(private db: AngularFireDatabase, private articleService: ArticleService) {
+  constructor(private db: AngularFireDatabase, private articleService: ArticleService, private datePipe: DatePipe) { 
+   
     this.articleService.getCountArticles().subscribe((count) => {
       this.id = count.toString();
       console.log(this.id);
@@ -26,6 +28,7 @@ export class AddArticleComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.datePipe.transform(this.creationDate, 'dd/MM/yyyy');
   }
 
   onSubmit(form: NgForm) {

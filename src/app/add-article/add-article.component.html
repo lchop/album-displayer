@@ -41,9 +41,10 @@
         id="creationDate"
         min="2018-01-01"
         max="2030-12-31"
-        type="creationDate"
+        type="date"
         aria-label="CreationDate"
-        [(ngModel)]="creationDate"
+        [ngModel]="creationDate | date:'yyyy-MM-dd'"
+        (ngModelChange)="creationDate = $event"
       />
   </div>
   <div class="flex items-center justify-center my-8">
