@@ -25,6 +25,7 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { DatePipe } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { DeleteArticleComponent } from './delete-article/delete-article.component';
 
 
 // const firebaseConfig = {
@@ -52,6 +53,7 @@ import { environment } from 'src/environments/environment';
     CarouselComponent,
     ContactPageComponent,
     AddArticleComponent,
+    DeleteArticleComponent,
   ],
   imports: [
     BrowserModule,

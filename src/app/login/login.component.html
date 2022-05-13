@@ -1,16 +1,13 @@
 <div class="container max-w-full max-h-full bg-primary-300">
   <div
-    class=" bg-primary-50 py-8 px-4 flex flex-col min-w-screen min-h-screen items-center justify-center"
+    class="bg-primary-50 py-8 px-4 flex flex-col min-w-screen min-h-screen items-center justify-center"
   >
-    <div class="container max-w-lg">
+    <div class="container max-w-xl">
       <div
         *ngIf="!(loginSucess$ | async); else logIn"
         class="container bg-primary-100 shadow-xl rounded-md px-8 pt-6 pb-8 mb-4"
       >
-        <form
-          (ngSubmit)="onSubmit(formSearch)"
-          #formSearch="ngForm"
-        >
+        <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
           <div class="mb-4">
             <label
               class="block text-primary-700 text-sm font-bold mb-2"
@@ -19,7 +16,7 @@
               Username
             </label>
             <input
-            class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
+              class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
               name="username"
               id="username"
               type="text"
@@ -36,7 +33,7 @@
               Password
             </label>
             <input
-            class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
+              class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
               name="password"
               id="password"
               type="password"
@@ -48,7 +45,7 @@
           <div class="flex items-center justify-center mt-8">
             <button
               [disabled]="formSearch.invalid"
-              class="bg-primary-500 hover:bg-primary-600 text-white font-thin  py-2 px-4 rounded-xl"
+              class="bg-primary-500 hover:bg-primary-600 text-white font-thin py-2 px-4 rounded-xl"
               type="submit"
             >
               Log In
@@ -56,23 +53,37 @@
           </div>
         </form>
       </div>
-        <ng-template #logIn>
-          <div class="flex items-center justify-center">
-            <div class="text-center">
-              <h1 class="text-primary-700 text-3xl font-bold mb-8">
-                Welcome {{ (user$ | async)?.email }}
-              </h1>
-              <app-add-article></app-add-article>
+      <ng-template #logIn>
+        <div class="container place-content-center">
+          <div class="text-center m-2">
+            <h1 class="text-primary-700 text-3xl font-bold m-2">
+              Bonjour, {{ (user$ | async)?.email }}
+            </h1>
               <a
-              class=" text-primary-500 hover:text-primary-500 font-thin underline mt-4 cursor-pointer justify-end"
-              (click)="onLogout()"
-            >
-              Log Out
-            </a>
-            </div>
+                class="text-primary-500 hover:text-primary-500 font-thin underline mt-4 cursor-pointer justify-end m-2"
+                (click)="onLogout()"
+              >
+                Log Out
+              </a>
           </div>
-          
-        </ng-template>
-      </div>
+          <div class="flex justify-center mt-4 mb-2">
+            <button
+              class="bg-primary-500 hover:bg-primary-600 text-white font-thin py-2 px-4 rounded-xl"
+              routerLink="/add-article"
+            >
+              Je souhaite ajouter un article
+            </button>
+          </div>
+          <div class="flex justify-center m-2">
+            <button
+              class="bg-primary-500 hover:bg-primary-600 text-white font-thin py-2 px-4 rounded-xl mt-4"
+              routerLink="/delete-article"
+              >
+              Je souhaite supprimer un article
+            </button>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
+</div>

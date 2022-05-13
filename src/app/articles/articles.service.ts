@@ -36,13 +36,13 @@ export class ArticleService {
     );
   }
 
-  // getArticle(id: string): Observable<Article> {
-  //   return this.db.object<Article>(`articles/${id}`).valueChanges().pipe(
-  //     map((album) => {
-  //       return album;
-  //     }) // JSON
-  //   );
-  // }
+  getArticle(id: string): Observable<Article> {
+    return this.db.object<Article>(`articles/${id}`).valueChanges().pipe(
+      map((album) => {
+        return album;
+      }) // JSON
+    );
+  }
 
   getCountArticles(): Observable<number> {
     return this.db.list<Article>('articles').valueChanges().pipe(
@@ -86,5 +86,20 @@ export class ArticleService {
           .slice((page - 1) * size, page * size);
       })
     );
+  }
+
+  deleteArticle(article: Article): void {
+    this.db.object(`articles/${article.id}`).remove();
+    this.getArticles().subscribe((articles) => {
+      articles.forEach(element => {
+        if (element.id > article.id) {
+          const itemsRef = this.db.list(`articles`);
+          let newId = (Number(element.id)-1).toString();
+          itemsRef.remove(element.id);
+          itemsRef.set(newId, element);
+          itemsRef.update(newId, {id: Number(element.id)-1});
+          }
+      });
+    });
   }
 }

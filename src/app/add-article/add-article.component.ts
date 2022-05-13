@@ -23,7 +23,6 @@ export class AddArticleComponent implements OnInit {
    
     this.articleService.getCountArticles().subscribe((count) => {
       this.id = count.toString();
-      console.log(this.id);
     });
    }
 
@@ -32,7 +31,6 @@ export class AddArticleComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.id);
     
     const itemsRef = this.db.list(`articles`);
     const newArticle : Article = {'id' : this.id,

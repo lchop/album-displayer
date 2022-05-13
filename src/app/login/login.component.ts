@@ -29,5 +29,4 @@ export class LoginComponent {
   onLogout() {
     this.auth.signOut();
   }
-
 }
