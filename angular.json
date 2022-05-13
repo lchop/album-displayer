@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app-music": {
+    "app-articles": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -91,10 +91,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "app-music:build:production"
+              "browserTarget": "app-articles:build:production"
             },
             "development": {
-              "browserTarget": "app-music:build:development"
+              "browserTarget": "app-articles:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -102,7 +102,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "app-music:build"
+            "browserTarget": "app-articles:build"
           }
         },
         "test": {
@@ -126,5 +126,5 @@
       }
     }
   },
-  "defaultProject": "app-music"
+  "defaultProject": "app-articles"
 }
