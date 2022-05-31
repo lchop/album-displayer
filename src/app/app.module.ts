@@ -26,6 +26,7 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { DatePipe } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { DeleteArticleComponent } from './delete-article/delete-article.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 
 // const firebaseConfig = {
@@ -54,6 +55,7 @@ import { DeleteArticleComponent } from './delete-article/delete-article.componen
     ContactPageComponent,
     AddArticleComponent,
     DeleteArticleComponent,
+    UploadFileComponent,
   ],
   imports: [
     BrowserModule,
