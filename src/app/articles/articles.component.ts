@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Article } from './article.model';
 import { ArticleService } from './articles.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+
 
 @Component({
   selector: 'app-articles',
@@ -15,15 +17,14 @@ export class ArticlesComponent implements OnInit {
   @Input() set currentPage(value: number) {
     this.articleService
       .paginate(value, 2)
-      .subscribe((articles) => (this.articles = articles));
+      .subscribe((articles) => {
+        this.articles = articles;
+      });
   }
   @Output() onPlay: EventEmitter<Article> = new EventEmitter();
   @Output() onDurationStart: EventEmitter<string> = new EventEmitter();
 
   selectedAlbum!: Article;
-
-  observableDuration$!: Observable<number>;
-
   searchFound: number = 0;
 
   count = 0;

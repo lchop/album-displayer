@@ -44,11 +44,12 @@
         class="col-span-1 row-span-1 mb-4 px-4 py-8 bg-white shadow-md rounded-md"
         *ngFor="let article of articles"
       >
+        <div class="container" *ngIf="article.imageName">
+          <img [src]="article.imageName" alt="Image from AngularFireStorage">
+        </div>
         <h2 class="px-1 py-2 font-bold text-primary-800">
           Titre:
-          <a routerLink="/description/{{ article.id }}">
-            <span class="font-thin text-primary-500">{{ article.title }}</span>
-          </a>
+          <span class="font-thin text-primary-500">{{ article.title }}</span>
         </h2>
         <h2 class="px-1 py-2 font-bold text-primary-800">
           Description:

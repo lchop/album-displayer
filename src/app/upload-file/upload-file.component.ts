@@ -19,11 +19,10 @@ export class UploadFileComponent implements OnInit {
   constructor(private afStorage: AngularFireStorage) { }
 
   ngOnInit(): void {
-    // this.downloadURL = this.afStorage.ref('/images/mario.png').getDownloadURL();
   }
 
   upload(event: any) {    
-    this.nameImage = event.target.files[0].name;
+     this.nameImage = event.target.files[0].name;
 
     // create a reference to the storage bucket location
     this.ref = this.afStorage.ref('/images/' + this.nameImage);
@@ -37,12 +36,17 @@ export class UploadFileComponent implements OnInit {
     .pipe(map(s => (s.bytesTransferred / s.totalBytes) * 100)));
 
     // get notified when the download URL is available
+    // this.task.snapshotChanges().pipe(
+    //   map(s => s.ref.getDownloadURL().then(url => {
+    //     console.log(url);
+    //     this.uploadFileName.emit(url)
+    //   }))).subscribe();
     this.task.snapshotChanges().pipe(
       finalize(() => {
-        this.uploadFileName.emit(this.nameImage);
-      }))
-    .subscribe();
+        this.ref.getDownloadURL().pipe( map(url => {
+          this.uploadFileName.emit(url);
+        })).subscribe();
+    })).subscribe();
   }
-
 
 }
