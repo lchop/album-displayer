@@ -30,7 +30,7 @@
             Description *
           </label>
           <textarea
-            class="justify-start w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100 h-96 overflow-y-scroll"
+            class="justify-start w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100 h-56 overflow-y-scroll"
             name="description"
             required
             id="description"
@@ -60,10 +60,20 @@
             (ngModelChange)="creationDate = $event"
           />
         </div>
+        <div class="mb-4">
+          <app-upload-file 
+          (uploadFileName)="onUploadImage($event)"
+          (progress)="onProgressUploadImage($event)"
+          >
+          </app-upload-file>
+          
+          <!-- <progress max="100" [value]="(uploadProgress | async)"></progress> -->
+        </div>
+        
         <div class="flex items-center justify-center my-8">
           <button
-            [disabled]="formSearch.invalid"
-            class="bg-primary-500 hover:bg-primary-600 text-white font-thin py-2 px-4 rounded-xl"
+            [disabled]="(formSearch.invalid) || (progressUploadImage | async) < 100"
+            class="bg-primary-500 hover:bg-primary-600 text-white font-thin py-2 px-4 rounded-xl disabled:bg-primary-100 disabled:hover:bg-primary-100"
             type="submit"
           >
             Add article

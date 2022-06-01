@@ -4,7 +4,7 @@ export class Article {
   title!: string;
   description!: string;
   status!: string;
-  url?: string;
+  imageName?: string;
   tags?: string[];
   like?: string;
   [key: string]: string | Date | number | string[] | undefined;

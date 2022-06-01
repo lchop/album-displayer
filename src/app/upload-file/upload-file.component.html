@@ -1,6 +1,30 @@
-<label for="file">File:</label>
-<input type="file" (change)="upload($event)" accept=".png,.jpg" />
-<progress max="100" [value]="(uploadProgress | async)"></progress>
-<div class="container" *ngIf="downloadURL | async; let url">
-    <img [src]="url" alt="Image from AngularFireStorage">
+
+<div class="flex justify-between py-4 ">
+    <div *ngIf="(uploadProgress | async) !== 100; else uploadSucess">
+        <label class="w-64 flex flex-col items-center px-4 py-6 bg-primary-50 text-primary-700 rounded-lg shadow-lg tracking-wide uppercase border border-primary-800 cursor-pointer hover:bg-primary-100 hover:text-primary-600">
+            <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+            </svg>
+            <span class="mt-2 text-base leading-normal">Ajouter une image</span>
+            <input (change)="upload($event)" type='file' class="hidden" />
+        </label>
+    </div>
+    <ng-template #uploadSucess>
+        <div class="w-64 flex flex-col items-center px-4 py-6 bg-primary-50 text-primary-700 rounded-lg shadow-lg tracking-wide uppercase border border-primary-800">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#911011" viewBox="0 0 256 256"><circle cx="128" cy="128" r="96" opacity="0.2"></circle><polyline points="172 104 113.3 160 84 132" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><circle cx="128" cy="128" r="96" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle></svg>
+            <span>{{ nameImage }}</span>
+        </div>
+        
+    </ng-template>
+
+    <label class="w-64 flex flex-col items-center px-4 py-6 bg-primary-50 text-primary-700 rounded-lg shadow-lg tracking-wide uppercase border border-primary-800 cursor-pointer hover:bg-primary-100 hover:text-primary-600">
+        <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+        </svg>
+        <span class="mt-2 text-base leading-normal">Ajouter un article</span>
+        <input (change)="upload($event)" type='file' class="hidden" />
+    </label>
+
+    
 </div>
+    

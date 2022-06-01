@@ -18,6 +18,8 @@ export class AddArticleComponent implements OnInit {
   title = '';
   description= '';
   creationDate = new Date();
+  imageName = '';
+  progressUploadImage = new Observable<number>();
 
   constructor(private db: AngularFireDatabase, private articleService: ArticleService, private datePipe: DatePipe) { 
    
@@ -37,8 +39,17 @@ export class AddArticleComponent implements OnInit {
                                 'status' : 'Published',
                                 'title' : form.value['title'], 
                                 'description': form.value['description'], 
-                                'creationDate': form.value['creationDate']};
+                                'creationDate': form.value['creationDate'],
+                                'imageName': this.imageName};
     itemsRef.set(this.id, newArticle);
+  }
+
+  onUploadImage(event: string){
+    this.imageName = event;
+  }
+
+  onProgressUploadImage(event: Observable<number>){
+    this.progressUploadImage = event;
   }
 
 }
