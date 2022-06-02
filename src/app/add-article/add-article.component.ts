@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { NgForm } from '@angular/forms';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { Article } from '../articles/article.model';
 import { ArticleService } from '../articles/articles.service';
 
@@ -12,43 +12,43 @@ import { ArticleService } from '../articles/articles.service';
   styleUrls: ['./add-article.component.scss']
 })
 export class AddArticleComponent implements OnInit {
-
-  id ='';
+  id = '';
   status = '';
   title = '';
   description= '';
   creationDate = new Date();
+  fileName = '';
   imageName = '';
   progressUploadImage = new Observable<number>();
-  articleAdded = false
+  articleAdded = false;
+  countSub: Subscription;
 
   constructor(private db: AngularFireDatabase, private articleService: ArticleService, private datePipe: DatePipe) { 
-   
-    this.articleService.getCountArticles().subscribe((count) => {
-      this.id = count.toString();
-    });
-   }
+  }
 
   ngOnInit(): void {
     this.datePipe.transform(this.creationDate, 'dd/MM/yyyy');
   }
 
-  onSubmit(form: NgForm) {
-    
-    const itemsRef = this.db.list(`articles`);
-    const newArticle : Article = {'id' : this.id,
-                                'status' : 'Published',
+  onSubmit(form: NgForm) { 
+      const newArticle : Article = {
                                 'title' : form.value['title'], 
                                 'description': form.value['description'], 
                                 'creationDate': form.value['creationDate'],
-                                'imageName': this.imageName};
-    itemsRef.set(this.id, newArticle).then(() => {
+                                'imageName': this.imageName,
+                                'fileName': this.fileName};
+    const itemsRef = this.db.object(`articles/${this.title}`);    
+    itemsRef.set(newArticle).finally(() => {
       this.articleAdded = true;
     });
-  }
+    }
 
   onUploadImage(event: string){
     this.imageName = event;
+  }
+
+  onUploadFile(event: string){
+    this.fileName = event;
   }
 
   onProgressUploadImage(event: Observable<number>){

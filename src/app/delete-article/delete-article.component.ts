@@ -21,6 +21,7 @@ export class DeleteArticleComponent implements OnInit {
 
   onDeleteArticleClick(article: Article) {
     this.articleService.deleteArticle(article);
+    this.articles$ = this.articleService.getArticles();
   }
 
 

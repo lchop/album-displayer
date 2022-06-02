@@ -2,8 +2,8 @@
   <div
     class="bg-primary-50 py-8 px-4 flex flex-col min-w-screen min-h-screen items-center justify-center"
   >
-  <h1 class="text-primary-700 text-3xl font-bold mb-4 text-center">Ajouter un article</h1>
     <div *ngIf="!articleAdded; else articleAddedSuccess" class="container max-w-xl">
+      <h1 class="text-primary-700 text-3xl font-bold mb-4 text-center">Ajouter un article</h1>
       <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
         <div class="mb-4">
           <label
@@ -17,6 +17,7 @@
             name="title"
             id="title"
             type="text"
+            maxlength="100"
             placeholder="Titre"
             aria-label="Tilte"
             required
@@ -36,6 +37,7 @@
             required
             id="description"
             type="description"
+            maxlength="350"
             placeholder="Entrer une description de votre article"
             aria-label="Description"
             [(ngModel)]="description"
@@ -73,11 +75,17 @@
         
         <div class="flex items-center justify-center my-8">
           <button
-            [disabled]="(formSearch.invalid) || ((progressUploadImage | async) < 100 && imageName !== '')"
-            class="bg-primary-500 hover:bg-primary-600 text-white font-thin py-2 px-4 rounded-xl disabled:bg-primary-100 disabled:hover:bg-primary-100"
-            type="submit"
+          [disabled]="(formSearch.invalid) || ((progressUploadImage | async) < 100 && imageName !== '')"
+          type="submit"
+          class="relative py-4 px-6 disabled:bg-primary-100 disabled:hover:bg-primary-100 bg-secondary-600 hover:bg-secondary-500 rounded-lg leading-none flex items-center text divide-x divide-secondary-50"
           >
-            Add article
+              <span
+                  class="text-secondary-50 pr-6 font-sans transition duration-200"
+                  > Ajouter</span
+              > 
+              <span class="flex items-center space-x-5 pl-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" opacity="0.2"></circle><polyline points="172 104 113.3 160 84 132" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><circle cx="128" cy="128" r="96" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle></svg>
+              </span>
           </button>
         </div>
       </form>
@@ -123,7 +131,7 @@
         <div class="flex flex-col justify-center items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#911011" viewBox="0 0 256 256"><circle cx="128" cy="128" r="96" opacity="0.2"></circle><polyline points="172 104 113.3 160 84 132" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><circle cx="128" cy="128" r="96" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle></svg>
           <h1 class="text-primary-700 text-3xl font-bold mt-4">
-            Article added successfully
+            Article ajoutée avec succès
           </h1>
           <a
             routerLink="/login"

@@ -1,0 +1,17 @@
+<div class="container w-138 bg-primary-50 rounded-lg shadow-xl">   
+        <img class="object-cover w-138 h-[288px] rounded-t-lg bg-primary-50" src="{{article.imageName}}" alt="Syncing" />
+    <div class="block w-138 h-72 bg-primary-800 text-left rounded-b-lg px-4 py-8">
+        <h2 class="h-12 px-1 py-2 font-bold text-white">
+            Titre:
+            <span class="font-thin text-white">{{ article.title }}</span>
+            </h2>
+            <h2 class="h-36 px-1 py-2 font-bold text-white">
+            Description:
+            <span class="font-thin text-white">{{ article.description }}</span>
+            </h2>
+            <h2 class="px-1 py-2 font-bold text-white">
+            Date de publication:
+            <span class="font-thin text-white">{{ article.creationDate | date :'dd/MM/YYYY' }}</span>
+        </h2>
+    </div>
+</div>

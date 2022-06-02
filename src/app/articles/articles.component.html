@@ -1,9 +1,9 @@
-<div class="container max-w-screen-md mx-auto">
+<div class="container max-w-screen-2xl mx-auto">
   <div class="pt-4 px-4">
     <div class="flex flex-col items-center justify-center pt-2 px-4">
-      <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
+      <form class="inline-flex" (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
         <input
-          class="font-thin text-secondary-600 px-2 py-2 outline-none focus:ring-primary-200 focus:ring-2 rounded-md placeholder-primary-200 bg-white"
+          class="font-thin text-secondary-600 px-2 py-2 outline-none focus:ring-primary-200 focus:ring-2 rounded-l-md placeholder-primary-200 bg-white"
 
           (keyup)="onTyping($event)"
           name="word"
@@ -13,11 +13,13 @@
         />
         <button
           [disabled]="formSearch.invalid"
-          class="bg-secondary-500 hover:bg-secondary-600 text-secondary-50 font-sans ml-2 py-2 px-4 rounded-xl"
           type="submit"
-        >
-          Search
-        </button>
+          class="relative py-2 px-4 bg-secondary-600 hover:bg-secondary-500 rounded-r-md leading-none flex items-center"
+          >
+             
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="116" cy="116" r="84" opacity="0.2"></circle><circle cx="116" cy="116" r="84" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="175.4" y1="175.4" x2="224" y2="224" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>              </span>
+          </button>
       </form>
       <div *ngIf="searchFound > 0; else nothingFound">
         <div class="flex items-center justify-center py-4 px-4">
@@ -36,35 +38,17 @@
     </div>
   </div>
 
-  <div class="flex items-center justify-center rounded-md">
+  <div class="flex items-center justify-center">
     <ul
       class="grid grid-cols-2 grid-rows-1 gap-20 place-content-evenly max-w-screen-xl"
     >
       <li
-        class="col-span-1 row-span-1 mb-4 px-4 py-8 bg-white shadow-md rounded-md"
+        class="col-span-1 row-span-1 bg-transparent"
         *ngFor="let article of articles"
       >
-        <div class="container" *ngIf="article.imageName">
-          <img [src]="article.imageName" alt="Image from AngularFireStorage">
-        </div>
-        <h2 class="px-1 py-2 font-bold text-primary-800">
-          Titre:
-          <span class="font-thin text-primary-500">{{ article.title }}</span>
-        </h2>
-        <h2 class="px-1 py-2 font-bold text-primary-800">
-          Description:
-          <span class="font-thin text-primary-500">{{ article.description }}</span>
-        </h2>
-        <h2 class="px-1 py-2 font-bold text-primary-800">
-          Date:
-          <span class="font-thin text-primary-500">{{ article.creationDate | date :'dd/MM/YYYY' }}</span>
-        </h2>
-        <h2 *ngIf="article.like" class="px-1 py-2 font-bold text-primary-800">
-          Like: <span class="font-thin text-primary-500">{{ article.like }}</span>
-        </h2>
-        <h2 *ngIf="article.tags" class="px-1 py-2 font-bold text-primary-800">
-          Tags: <span class="font-thin text-primary-500">{{ article.tags }}</span>
-        </h2>
+        <app-article-card
+        [article]="article">
+        </app-article-card>
       </li>
     </ul>
   </div>

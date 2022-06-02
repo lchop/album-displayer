@@ -35,12 +35,6 @@ export class UploadFileComponent implements OnInit {
     this.progress.emit(this.uploadProgress = this.task.snapshotChanges()
     .pipe(map(s => (s.bytesTransferred / s.totalBytes) * 100)));
 
-    // get notified when the download URL is available
-    // this.task.snapshotChanges().pipe(
-    //   map(s => s.ref.getDownloadURL().then(url => {
-    //     console.log(url);
-    //     this.uploadFileName.emit(url)
-    //   }))).subscribe();
     this.task.snapshotChanges().pipe(
       finalize(() => {
         this.ref.getDownloadURL().pipe( map(url => {
@@ -48,5 +42,4 @@ export class UploadFileComponent implements OnInit {
         })).subscribe();
     })).subscribe();
   }
-
 }

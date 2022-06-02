@@ -1,12 +1,9 @@
 export class Article {
-  id!: string;
   creationDate !: Date;
   title!: string;
   description!: string;
-  status!: string;
   imageName?: string;
-  tags?: string[];
-  like?: string;
+  fileName?: string;
   [key: string]: string | Date | number | string[] | undefined;
 }
 

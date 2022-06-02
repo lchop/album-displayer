@@ -90,17 +90,7 @@ export class ArticleService {
 
   deleteArticle(article: Article): void {
     const itemsRef = this.db.list<Article>(`articles`);
-    itemsRef.remove(article.id);
-    itemsRef.valueChanges().subscribe((articles) => {
-      articles.forEach((element) => {
-        if (element.id > article.id) {
-          const newId = (Number(element.id)-1).toString();
-          itemsRef.remove(element.id);
-          element.id = newId;
-          itemsRef.set(newId, element);
-        }
-      });
-    });
+    itemsRef.remove(article.title);
   }
           
 }
