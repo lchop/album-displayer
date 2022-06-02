@@ -2,12 +2,13 @@
   <div class="bg-primary-50 min-h-screen w-full">
       <div class="flex items-center justify-center pt-10">
         <div
-          class=" bg-primary-100 shadow rounded py-12 lg:px-28 px-8"
+          class=" bg-primary-50 border-dashed border-primary-700 border-2 rounded-xl py-12 lg:px-28 px-8"
         >
           <p
-            class="md:text-3xl text-xl font-bold leading-7 text-center text-primary-700"
+            class="md:text-3xl text-xl font-bold leading-7 text-center text-primary-700 inline-flex justify-center items-center"
           >
-            Contactez nous
+            Contactez nous 
+            <svg class="ml-8" xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#911011" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="224 96 145.5 152 110.5 152 32 96 128 32 224 96" opacity="0.2"></polygon><path d="M32,96V200a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V96L128,32Z" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="110.5" y1="152" x2="34.5" y2="205.7" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="221.5" y1="205.7" x2="145.5" y2="152" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="224 96 145.5 152 110.5 152 32 96" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg>
           </p>
           <div class="md:flex items-center mt-12">
             <div class="md:w-72 flex flex-col">
@@ -65,11 +66,17 @@
             </div>
           </div>
 
-          <div class="flex items-center justify-center w-full">
+          <div class="flex items-center justify-center w-full mt-12">
             <button
-              class="mt-9 text-base font-semibold leading-none text-primary-50 py-4 px-10 bg-primary-700 rounded hover:bg-primary-600 focus:ring-2 focus:ring-primary-700 focus:outline-none"
+            class="relative py-4 px-6 bg-secondary-600 hover:bg-secondary-600 rounded-lg leading-none flex items-center text divide-x divide-secondary-50"
             >
-              ENVOYEZ
+                <span
+                    class="text-secondary-50 pr-6 font-sans transition duration-200"
+                    > Envoyez</span
+                > 
+                <span class="flex items-center space-x-5 pl-6 animate-tilt">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M88,134.9,224.1,36.6h0a7.8,7.8,0,0,0-6.2-.2L33.3,108.9c-7.4,2.9-6.4,13.7,1.4,15.3Z" opacity="0.2"></path><path d="M132.9,174.4l-31.2,31.2A8,8,0,0,1,88,200V134.9Z" opacity="0.2"></path><path d="M88,134.9,177.9,214a8,8,0,0,0,13.1-4.2L228.6,45.6a8,8,0,0,0-10.7-9.2L33.3,108.9c-7.4,2.9-6.4,13.7,1.4,15.3Z" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="88" y1="134.9" x2="224.1" y2="36.6" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M132.9,174.4l-31.2,31.2A8,8,0,0,1,88,200V134.9" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+                 </span>
             </button>
           </div>
         </div>
