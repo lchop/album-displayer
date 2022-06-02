@@ -2,6 +2,7 @@
   <div
     class="bg-primary-50 py-8 px-4 flex flex-col min-w-screen min-h-screen items-center justify-center"
   >
+  <h1 class="text-primary-700 text-3xl font-bold mb-4 text-center">Ajouter un article</h1>
     <div *ngIf="!articleAdded; else articleAddedSuccess" class="container max-w-xl">
       <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
         <div class="mb-4">
