@@ -63,10 +63,18 @@
             (ngModelChange)="creationDate = $event"
           />
         </div>
-        <div class="mb-4">
+        <div class="mb-4 justify-between inline-flex">
           <app-upload-file 
+          [type]="'une image'"
           (uploadFileName)="onUploadImage($event)"
           (progress)="onProgressUploadImage($event)"
+          >
+          </app-upload-file>
+
+          <app-upload-file
+          [type]="'un fichier'"
+          (uploadFileName)="onUploadFile($event)"
+          (progress)="onProgressUploadFile($event)"
           >
           </app-upload-file>
           

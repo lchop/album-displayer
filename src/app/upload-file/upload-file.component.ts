@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/compat/storage';
 import { finalize, map, Observable } from 'rxjs';
 
@@ -13,6 +13,7 @@ export class UploadFileComponent implements OnInit {
   uploadProgress: Observable<number>;
   downloadURL: Observable<string>;
   nameImage: string;
+  @Input() type: string;
   @Output() uploadFileName: EventEmitter<string> = new EventEmitter();
   @Output() progress: EventEmitter<Observable<number>> = new EventEmitter();
 
@@ -22,7 +23,7 @@ export class UploadFileComponent implements OnInit {
   }
 
   upload(event: any) {    
-     this.nameImage = event.target.files[0].name;
+    this.nameImage = event.target.files[0].name;
 
     // create a reference to the storage bucket location
     this.ref = this.afStorage.ref('/images/' + this.nameImage);
@@ -42,4 +43,5 @@ export class UploadFileComponent implements OnInit {
         })).subscribe();
     })).subscribe();
   }
+
 }

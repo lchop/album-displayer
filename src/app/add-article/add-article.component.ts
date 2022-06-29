@@ -20,6 +20,7 @@ export class AddArticleComponent implements OnInit {
   fileName = '';
   imageName = '';
   progressUploadImage = new Observable<number>();
+  progressUploadFile = new Observable<number>();
   articleAdded = false;
   countSub: Subscription;
 
@@ -53,6 +54,10 @@ export class AddArticleComponent implements OnInit {
 
   onProgressUploadImage(event: Observable<number>){
     this.progressUploadImage = event;
+  }
+
+  onProgressUploadFile(event: Observable<number>){
+    this.progressUploadFile = event;
   }
 
 }
