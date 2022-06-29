@@ -28,6 +28,7 @@ import { environment } from 'src/environments/environment';
 import { DeleteArticleComponent } from './delete-article/delete-article.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { ArticleCardComponent } from './article-card/article-card.component';
+import { ContactService } from './contact-page/contact.service';
 
 
 // const firebaseConfig = {
@@ -70,7 +71,7 @@ import { ArticleCardComponent } from './article-card/article-card.component';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
   ],
-  providers: [AuthService, DatePipe],
+  providers: [AuthService, DatePipe, ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
