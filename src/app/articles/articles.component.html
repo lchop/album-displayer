@@ -3,8 +3,7 @@
     <div class="flex flex-col items-center justify-center pt-2 px-4">
       <form class="inline-flex" (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
         <input
-          class="font-thin text-secondary-600 px-2 py-2 outline-none focus:ring-primary-200 focus:ring-2 rounded-l-md placeholder-primary-200 bg-white"
-
+          class="font-thin text-secondary-600 px-2 py-2 outline-none focus:ring-primary-200 focus:ring-1 rounded-l-md placeholder-primary-200 bg-white"
           (keyup)="onTyping($event)"
           name="word"
           type="text"
@@ -14,7 +13,7 @@
         <button
           [disabled]="formSearch.invalid"
           type="submit"
-          class="relative py-2 px-4 bg-secondary-600 hover:bg-secondary-500 rounded-r-md leading-none flex items-center"
+          class="relative py-2 px-4 bg-secondary-600 hover:bg-secondary-500 rounded-r-md ring-1 ring-secondary-500 leading-none flex items-center"
           >
              
               <span class="flex items-center">

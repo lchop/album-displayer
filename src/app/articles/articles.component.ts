@@ -3,8 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Article } from './article.model';
 import { ArticleService } from './articles.service';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-
 
 @Component({
   selector: 'app-articles',
