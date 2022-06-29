@@ -13,15 +13,15 @@ export class ArticlesComponent implements OnInit {
   articles!: Article[];
 
   @Input() set currentPage(value: number) {
+    this.actualPage = value;
     this.articleService
-      .paginate(value, 2)
-      .subscribe((articles) => {
-        this.articles = articles;
-      });
+      .paginateFromSearch(this.actualPage, 2, '' )
+      .subscribe((articles) => (this.articles = articles));
   }
   @Output() onPlay: EventEmitter<Article> = new EventEmitter();
   @Output() onDurationStart: EventEmitter<string> = new EventEmitter();
 
+  actualPage: number = 1;
   selectedAlbum!: Article;
   searchFound: number = 0;
 
@@ -45,33 +45,33 @@ export class ArticlesComponent implements OnInit {
   onTyping(event: any) {
     if (event.target.value.length > 0) {
       this.articleService
-        .searchArticles(event.target.value)
+        .paginateFromSearch(this.actualPage, 2, event.target.value)
         .subscribe((articles) => (this.articles = articles));
       this.searchFound = this.articles.length;
     } else {
       this.articleService
-        .getArticles()
+        .paginateFromSearch(this.actualPage, 2, '' )
         .subscribe((articles) => (this.articles = articles));
       this.searchFound = 0;
     }
   }
 
-  onSubmit(albumName: NgForm): void {
-    if (albumName.value['word'] !== '') {
-      this.articleService
-        .searchArticles(albumName.value['word'])
+  onSubmit(articleName: NgForm): void {
+    if (articleName.value['word'] !== '') {
+        this.articleService
+        .paginateFromSearch(this.actualPage, 2, articleName.value['word'] )
         .subscribe((articles) => (this.articles = articles));
       if (this.articles.length > 0) {
         this.searchFound = this.articles.length;
       } else {
         this.articleService
-          .getArticles()
-          .subscribe((articles) => (this.articles = articles));
+        .paginateFromSearch(this.actualPage, 2, '' )
+        .subscribe((articles) => (this.articles = articles));
         this.searchFound = 0;
       }
     } else {
       this.articleService
-        .getArticles()
+        .paginateFromSearch(this.actualPage, 2, '' )
         .subscribe((articles) => (this.articles = articles));
       this.searchFound = 0;
     }

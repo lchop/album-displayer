@@ -64,25 +64,17 @@ export class ArticleService {
     );
   }
 
-  searchArticles(word: string): Observable<Article[]> {
-    return this.db.list<Article>('articles').valueChanges().pipe(
-      map((album) => {
-        return album.filter((album) =>
-          album.title.toLowerCase().includes(word.toLowerCase())
-        );
-      })
-    );
-  }
-
-  paginate(page: number, size: number): Observable<Article[]> {
+  paginateFromSearch(page: number, size: number, word:string): Observable<Article[]> {
     return this.db.list<Article>('articles').valueChanges().pipe(
       map((articles) => {
         return articles
-          .sort(
-            (a, b) =>
-              new Date(b.creationDate).getTime() -
-              new Date(a.creationDate).getTime()
-          )
+          .filter((articles) => {
+            if (word.length > 0) {
+              return articles.title.toLowerCase().includes(word.toLowerCase())
+            } else { 
+              return true
+            }
+          })
           .slice((page - 1) * size, page * size);
       })
     );
