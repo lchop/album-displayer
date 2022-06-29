@@ -18,7 +18,7 @@ export class PaginateComponent implements OnInit {
   constructor(private articleService: ArticleService) { 
     articleService.sendCurrentNumberPage.subscribe(numberPage => {this.perPage});
   }
-
+  
   ngOnInit(): void {
     this.articleService.getCountArticles().subscribe(count => this.max_page = count / this.perPage);
   }
