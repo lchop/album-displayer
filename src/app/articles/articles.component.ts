@@ -13,7 +13,6 @@ export class ArticlesComponent {
   articlesOnPage!: Article[];
 
   @Input() set currentPage(value: number) {
-    console.log(value);
     this.actualPage = value;    
     if (this.searchWord.length > 0) {
       this.articleService
@@ -24,9 +23,7 @@ export class ArticlesComponent {
           this.currentCountArticles.emit(this.articles.length);
           });
     }
-    else {
-      console.log(this.actualPage);
-      
+    else {      
       this.articleService
         .getArticles()
         .subscribe((articles) => {
@@ -40,6 +37,7 @@ export class ArticlesComponent {
   }
 
   @Output() currentCountArticles: EventEmitter<number> = new EventEmitter();
+  @Output() updateCurrentPage: EventEmitter<number> = new EventEmitter();
 
   actualPage: number = 1;
   searchFound: number = 0;
@@ -51,6 +49,7 @@ export class ArticlesComponent {
   onTyping(event: any) {
     this.searchWord = event.target.value;
     this.actualPage = 1;
+    this.updateCurrentPage.emit(this.actualPage);
     if (this.searchWord.length > 0) {
       this.articleService
         .search(this.searchWord)
@@ -75,6 +74,7 @@ export class ArticlesComponent {
   onSubmit(articleName: NgForm): void {
     this.searchWord = articleName.value['word'];
     this.actualPage = 1;
+    this.updateCurrentPage.emit(this.actualPage);
     if (this.searchWord.length > 0) {
         this.articleService
         .search(this.searchWord )

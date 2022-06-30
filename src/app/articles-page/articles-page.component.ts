@@ -10,7 +10,7 @@ import { ArticleService } from '../articles/articles.service';
 export class ArticlesPageComponent implements OnInit {
 
   lastArticle = new Article();
-  currentAlbumPage = 1;
+  currentArticlePage = 1;
   currentCountArticles: number;
 
   constructor(private articleService: ArticleService) {}
@@ -23,13 +23,18 @@ export class ArticlesPageComponent implements OnInit {
       });
   }
 
-  setCurrentAlbumPage(page: number): void {
-    this.currentAlbumPage = page;
+  setCurrentArticlePage(page: number): void {
+    this.currentArticlePage = page;
   }
 
   updateCountArticles(countArticles: number)
   {
     this.currentCountArticles = countArticles;
+  }
+
+  updateCurrentPage(page: number)
+  {
+    this.currentArticlePage = page;
   }
 
 }
