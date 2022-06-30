@@ -69,56 +69,62 @@
     </h2>
     <ng-template #nothingToShow> No articles </ng-template>
   </div>
-  <div class="bg-primary-50 min-h-screen">
-    <div class="max-w-3xl p-12">
-      <h1
-      class="text-3xl font-title font-bold text-primary-700 leading-snug"
-    >
-        <a routerLink="/sachem">SaCh'M</a> <br />
-      </h1>
-      
-      <div class="typewriter mt-4">
+  <div class="flex">
+    <div class="bg-primary-50 min-h-screen w-3/5">
+      <div class="max-w-3xl p-12">
+        <h1
+        class="text-7xl font-title font-extrabold text-primary-700 leading-snug"
+      >
+          <a routerLink="/sachem">SaCh'M</a> <br />
+        </h1>
+        <div class="inline-flex">
+          <h2 class="text-center text-4xl font-sans font-bold text-primary-400 leading-snug mt-8 ">
+            Agence de communication <br />
+          </h2>
+          <svg class="ml-8" xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="#911011" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M78,201.3,45.1,228.9A8,8,0,0,1,32,222.8V64a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V192a8,8,0,0,1-8,8H81.7Z" opacity="0.2"></path><path d="M77.4,201.9l-32.3,27A8,8,0,0,1,32,222.8V64a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V192a8,8,0,0,1-8,8H82.5A7.8,7.8,0,0,0,77.4,201.9Z" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+        </div>
+
+        <div class="inline-flex mt-8 typewriter">
+          <h2 class="text-2xl font-sans font-semibold text-primary-400 leading-snug">
+            Spécialisé dans la redaction de contenue <br />
+          </h2>
+        </div>
         
-        <h1 class="text-2xl font-sans font-semibold text-primary-400 leading-snug">
-          Agence de redaction à votre service <br />
-        </h1>
       </div>
-       
+      <div class="flex flex-col justify-start items-start mt-4 px-12">
+        <h3 class="text-2xl font-sans font-semibold text-primary-300 leading-snug">
+          10 ans d'expérience, plus de 500 articles publiées,<br/>
+        </h3>
+        <h3 class="text-2xl font-sans font-semibold text-primary-300 leading-snug">
+        à travers la France metropolitaine et les Outre-Mer.
+        </h3>
+      </div>
+      <div class="flex items-center justify-center">
+        <button routerLink="/contact"
+          class="my-24 py-6 px-8 bg-secondary-600 hover:bg-secondary-500 rounded-lg leading-none flex items-center text divide-x divide-secondary-50 text-xl shadow-md"
+          >
+              <span
+                  class="text-secondary-50 pr-6 font-sans transition duration-200"
+                  >Contactez nous</span
+              > 
+              <span class="flex items-center space-x-5 pl-6 animate-tilt">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M192,120,136,64l26.3-26.3a8,8,0,0,1,11.4,0l44.6,44.6a8,8,0,0,1,0,11.4Z" opacity="0.2"></path><path d="M96,216H48a8,8,0,0,1-8-8V163.3a7.9,7.9,0,0,1,2.3-5.6l120-120a8,8,0,0,1,11.4,0l44.6,44.6a8,8,0,0,1,0,11.4Z" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="136" y1="64" x2="192" y2="120" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="216 216 96 216 40.5 160.5" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="164" y1="92" x2="68" y2="188" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
+                  
+                </span>
+          </button>
+      </div>
     </div>
-    <div class="flex flex-col justify-center items-center mt-4">
-      <h1 class="text-2xl font-sans font-semibold text-primary-300 leading-snug mt-4">
-        10 ans d'expérience, plus de 500 articles publiées,<br/>
-      </h1>
-        <h1 class="text-2xl font-sans font-semibold text-primary-300 leading-snug mt-4">
-        A travers la France metropolitaine et les Outre-Mer,
+    <div class="bg-primary-700 w-2/5 min-h-screen">
+      <div class="flex flex-col items-center justify-center mt-8">
+        <img class="w-72 rounded-full" src="assets/images/portrait.jpeg" alt="greenmag">
+        <h1 class="mt-4 text-2xl font-sans font-semibold text-primary-50 leading-snug">
+          Sandrine CHOPOT, directrice de Sachem. <br />
         </h1>
-      <div class="max-w-2xl flex items-center justify-center mt-4">
-        <h1 class="text-2xl font-sans font-thin text-primary-800 leading-snug decoration-clone p-1">
-          Ils nous ont fait confiance:
-        </h1>
-      </div>
-      <div class="container">
-        <app-carousel [slides]="slides"></app-carousel>
+
       </div>
 
-      <div class="mt-8 flex justify-center items-center px-2 py-4">
-        <div class="relative group">
-            <div
-            class="animate-tilt group-hover:duration-200 duration-1000 group-hover:opacity-100 transition absolute inset-0.5 bg-gradient-to-r from-secondary-300 to-secondary-900 rounded-lg blur opacity-85"
-            ></div>
-            <button routerLink="/contact"
-            class="relative py-4 px-6 bg-secondary-600 hover:bg-secondary-500 rounded-lg leading-none flex items-center text divide-x divide-secondary-50"
-            >
-                <span
-                    class="text-secondary-50 pr-6 font-sans transition duration-200"
-                    >Contactez nous</span
-                > 
-                <span class="flex items-center space-x-5 pl-6 animate-tilt">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M192,120,136,64l26.3-26.3a8,8,0,0,1,11.4,0l44.6,44.6a8,8,0,0,1,0,11.4Z" opacity="0.2"></path><path d="M96,216H48a8,8,0,0,1-8-8V163.3a7.9,7.9,0,0,1,2.3-5.6l120-120a8,8,0,0,1,11.4,0l44.6,44.6a8,8,0,0,1,0,11.4Z" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="136" y1="64" x2="192" y2="120" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="216 216 96 216 40.5 160.5" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="164" y1="92" x2="68" y2="188" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
-                   
-                  </span>
-            </button>
-        </div>
     </div>
+
   </div>
+ 
 </div>
