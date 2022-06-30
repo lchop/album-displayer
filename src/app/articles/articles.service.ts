@@ -54,8 +54,8 @@ export class ArticleService {
 
   getLastArticle(): Observable<Article> {
     return this.db.list<Article>('articles').valueChanges().pipe(
-      map((album) => {
-        return album.sort(
+      map((article) => {
+        return article.sort(
           (a, b) =>
             new Date(b.creationDate).getTime() -
             new Date(a.creationDate).getTime()
@@ -75,6 +75,11 @@ export class ArticleService {
               return true
             }
           })
+          .sort(
+            (a, b) =>
+              new Date(b.creationDate).getTime() -
+              new Date(a.creationDate).getTime()
+          )
           .slice((page - 1) * size, page * size);
       })
     );
