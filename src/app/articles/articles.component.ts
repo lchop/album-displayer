@@ -10,14 +10,33 @@ import { ArticleService } from './articles.service';
 export class ArticlesComponent {
 
   articles!: Article[];
+  articlesOnPage!: Article[];
 
   @Input() set currentPage(value: number) {
-    this.actualPage = value;
-    this.articleService
-      .paginateFromSearch(this.actualPage, 2, this.searchWord )
-      .subscribe((articles) => {
-        this.articles = articles;
-        });
+    console.log(value);
+    this.actualPage = value;    
+    if (this.searchWord.length > 0) {
+      this.articleService
+        .search(this.searchWord)
+        .subscribe((articles) => {
+          this.articles = this.articleService.paginate(articles ,this.actualPage, 2);
+          this.searchFound = this.articles.length;
+          this.currentCountArticles.emit(this.articles.length);
+          });
+    }
+    else {
+      console.log(this.actualPage);
+      
+      this.articleService
+        .getArticles()
+        .subscribe((articles) => {
+          this.articles = articles;
+          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, 2);
+          this.searchFound = this.articles.length;
+          this.currentCountArticles.emit(this.articles.length);
+        }
+        );
+    }
   }
 
   @Output() currentCountArticles: EventEmitter<number> = new EventEmitter();
@@ -31,21 +50,23 @@ export class ArticlesComponent {
 
   onTyping(event: any) {
     this.searchWord = event.target.value;
+    this.actualPage = 1;
     if (this.searchWord.length > 0) {
       this.articleService
-        .paginateFromSearch(this.actualPage, 2, this.searchWord)
+        .search(this.searchWord)
         .subscribe((articles) => {
           this.articles = articles;
+          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, 2);
           this.searchFound = this.articles.length;
           this.currentCountArticles.emit(this.articles.length);
           });
-      
     } else {
       this.articleService
-        .paginateFromSearch(this.actualPage, 2, this.searchWord)
+        .getArticles()
         .subscribe((articles) => {
           this.articles = articles;
-          this.searchFound = 0;
+          this.articlesOnPage = this.articleService.paginate(articles , this.actualPage, 2);
+          this.searchFound = this.articles.length;
           this.currentCountArticles.emit(this.articles.length);
           });
     }
@@ -53,20 +74,23 @@ export class ArticlesComponent {
 
   onSubmit(articleName: NgForm): void {
     this.searchWord = articleName.value['word'];
+    this.actualPage = 1;
     if (this.searchWord.length > 0) {
         this.articleService
-        .paginateFromSearch(this.actualPage, 2, this.searchWord )
+        .search(this.searchWord )
         .subscribe((articles) => {
           this.articles = articles;
+          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, 2);
           this.searchFound = this.articles.length;
           this.currentCountArticles.emit(this.articles.length);
           });
     } else {
       this.articleService
-        .paginateFromSearch(this.actualPage, 2, this.searchWord )
+        .getArticles()
         .subscribe((articles) => {
           this.articles = articles;
-          this.searchFound = 0;
+          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, 2);
+          this.searchFound = this.articles.length;
           this.currentCountArticles.emit(this.articles.length);
           });
     }

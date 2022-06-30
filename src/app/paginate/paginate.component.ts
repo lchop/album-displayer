@@ -26,7 +26,7 @@ export class PaginateComponent implements OnInit {
     this.articleService.getCountArticles().subscribe(count => this.max_page = count / this.perPage);
   }
   
-  next() {    
+  next() {        
     if(this.page < this.max_page) {
       this.page = this.page + 1;
     }

@@ -64,7 +64,7 @@ export class ArticleService {
     );
   }
 
-  paginateFromSearch(page: number, size: number, word:string): Observable<Article[]> {
+  search(word:string): Observable<Article[]> {
     return this.db.list<Article>('articles').valueChanges().pipe(
       map((articles) => {
         return articles
@@ -80,9 +80,13 @@ export class ArticleService {
               new Date(b.creationDate).getTime() -
               new Date(a.creationDate).getTime()
           )
-          .slice((page - 1) * size, page * size);
       })
     );
+  }
+
+  paginate(articles:Article[], page: number, size: number)
+  {
+    return articles.slice((page - 1) * size, page * size);
   }
 
   deleteArticle(article: Article): void {
