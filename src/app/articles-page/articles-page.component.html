@@ -1,6 +1,6 @@
 <div class="bg-primary-50 min-w-full min-h-screen">
     <div class="flex items-center justify-center flex-col">
-        <app-articles [currentPage]= "currentAlbumPage"></app-articles>
-        <app-paginate class="mt-4" (currentPage)="setCurrentAlbumPage($event)"></app-paginate>
+        <app-articles (currentCountArticles)="updateCountArticles($event)" [currentPage]= "currentAlbumPage"></app-articles>
+        <app-paginate class="mt-4" [currentMaxPage]="currentCountArticles" (currentPage)="setCurrentAlbumPage($event)"></app-paginate>
     </div>
 </div>

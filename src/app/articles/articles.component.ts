@@ -20,6 +20,8 @@ export class ArticlesComponent {
         });
   }
 
+  @Output() currentCountArticles: EventEmitter<number> = new EventEmitter();
+
   actualPage: number = 1;
   searchFound: number = 0;
   searchWord: string = '';
@@ -35,6 +37,7 @@ export class ArticlesComponent {
         .subscribe((articles) => {
           this.articles = articles;
           this.searchFound = this.articles.length;
+          this.currentCountArticles.emit(this.articles.length);
           });
       
     } else {
@@ -43,6 +46,7 @@ export class ArticlesComponent {
         .subscribe((articles) => {
           this.articles = articles;
           this.searchFound = 0;
+          this.currentCountArticles.emit(this.articles.length);
           });
     }
   }
@@ -55,6 +59,7 @@ export class ArticlesComponent {
         .subscribe((articles) => {
           this.articles = articles;
           this.searchFound = this.articles.length;
+          this.currentCountArticles.emit(this.articles.length);
           });
     } else {
       this.articleService
@@ -62,6 +67,7 @@ export class ArticlesComponent {
         .subscribe((articles) => {
           this.articles = articles;
           this.searchFound = 0;
+          this.currentCountArticles.emit(this.articles.length);
           });
     }
   }

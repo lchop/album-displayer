@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ArticleService } from '../articles/articles.service';
 
 
@@ -12,7 +12,10 @@ export class PaginateComponent implements OnInit {
   perPage : number = 2;
   page: number = 1;
   max_page: number = 0;
-  
+  @Input() set currentMaxPage(max_page: number) {
+    this.max_page = max_page/this.perPage;
+  }
+
   @Output() currentPage: EventEmitter<number> = new EventEmitter();
 
   constructor(private articleService: ArticleService) { 
@@ -23,7 +26,7 @@ export class PaginateComponent implements OnInit {
     this.articleService.getCountArticles().subscribe(count => this.max_page = count / this.perPage);
   }
   
-  next() {
+  next() {    
     if(this.page < this.max_page) {
       this.page = this.page + 1;
     }
