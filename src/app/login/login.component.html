@@ -5,12 +5,18 @@
     <div class="container max-w-xl">
       <div
         *ngIf="!(loginSucess$ | async); else logIn"
-        class="container bg-primary-100 shadow-xl rounded-md px-8 pt-6 pb-8 mb-4"
+        class="bg-primary-50 border-dashed border-primary-700 border-2 rounded-xl py-12 lg:px-28 px-8 shadow-xl"
       >
+      <p
+      class="md:text-3xl text-xl font-bold leading-7 text-center text-primary-700 inline-flex justify-center items-center"
+    >
+      Login
+      <svg class="ml-8" xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#911011" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="94 170 136 128 94 86" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="24" y1="128" x2="136" y2="128" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M136,40h56a8,8,0,0,1,8,8V208a8,8,0,0,1-8,8H136" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+    </p>
         <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
-          <div class="mb-4">
+          <div class="mb-8 mt-12">
             <label
-              class="block text-primary-700 text-sm font-bold mb-2"
+              class="block text-primary-700 text-sm font-bold mb-4"
               for="username"
             >
               Username
