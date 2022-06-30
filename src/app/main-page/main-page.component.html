@@ -1,74 +1,4 @@
 <div class="container max-w-full max-h-full bg-primary-300">
-  <div
-    class="bg-secondary-600 text-white flex justify-center items-center py-0.5"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      fill="#fafafa"
-      viewBox="0 0 256 256"
-    >
-      <rect x="32" y="48" width="192" height="160" rx="8" opacity="0.2"></rect>
-      <rect
-        x="32"
-        y="48"
-        width="192"
-        height="160"
-        rx="8"
-        fill="none"
-        stroke="#fafafa"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
-      ></rect>
-      <line
-        x1="76"
-        y1="96"
-        x2="180"
-        y2="96"
-        fill="none"
-        stroke="#fafafa"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
-      ></line>
-      <line
-        x1="76"
-        y1="128"
-        x2="180"
-        y2="128"
-        fill="none"
-        stroke="#fafafa"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
-      ></line>
-      <line
-        x1="76"
-        y1="160"
-        x2="180"
-        y2="160"
-        fill="none"
-        stroke="#fafafa"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
-      ></line>
-    </svg>
-    <h2
-      class="flex ml-2 text-secondary-50"
-      *ngIf="lastArticle; else nothingToShow"
-    >
-      Dernier article
-      <h3 class="ml-2">
-          <span class="font-thin text-secondary-100">{{
-            lastArticle.title
-          }}</span>
-      </h3>
-    </h2>
-    <ng-template #nothingToShow> No articles </ng-template>
-  </div>
   <div class="flex">
     <div class="bg-primary-50 min-h-screen w-3/5">
       <div class="max-w-3xl p-12">
@@ -114,13 +44,12 @@
           </button>
       </div>
     </div>
-    <div class="bg-primary-700 w-2/5 min-h-screen">
+    <div class="bg-primary-700 w-2/5 min-h-screen border-l-4 border-secondary-500">
       <div class="flex flex-col items-center justify-center mt-8">
         <img class="w-72 rounded-full" src="assets/images/portrait.jpeg" alt="greenmag">
         <h1 class="mt-4 text-2xl font-sans font-semibold text-primary-50 leading-snug">
           Sandrine CHOPOT, directrice de Sachem. <br />
         </h1>
-
       </div>
 
     </div>
