@@ -18,7 +18,7 @@ export class ArticlesComponent {
       this.articleService
         .search(this.searchWord)
         .subscribe((articles) => {
-          this.articles = this.articleService.paginate(articles ,this.actualPage, 2);
+          this.articles = this.articleService.paginate(articles ,this.actualPage, this.perPage );
           this.searchFound = this.articles.length;
           this.currentCountArticles.emit(this.articles.length);
           });
@@ -28,7 +28,7 @@ export class ArticlesComponent {
         .getArticles()
         .subscribe((articles) => {
           this.articles = articles;
-          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, 2);
+          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, this.perPage);
           this.searchFound = this.articles.length;
           this.currentCountArticles.emit(this.articles.length);
         }
@@ -42,6 +42,7 @@ export class ArticlesComponent {
   actualPage: number = 1;
   searchFound: number = 0;
   searchWord: string = '';
+  perPage: number = 2;
 
   constructor(private articleService: ArticleService) {
   }
@@ -55,7 +56,7 @@ export class ArticlesComponent {
         .search(this.searchWord)
         .subscribe((articles) => {
           this.articles = articles;
-          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, 2);
+          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, this.perPage);
           this.searchFound = this.articles.length;
           this.currentCountArticles.emit(this.articles.length);
           });
@@ -64,7 +65,7 @@ export class ArticlesComponent {
         .getArticles()
         .subscribe((articles) => {
           this.articles = articles;
-          this.articlesOnPage = this.articleService.paginate(articles , this.actualPage, 2);
+          this.articlesOnPage = this.articleService.paginate(articles , this.actualPage, this.perPage);
           this.searchFound = this.articles.length;
           this.currentCountArticles.emit(this.articles.length);
           });
@@ -80,7 +81,7 @@ export class ArticlesComponent {
         .search(this.searchWord )
         .subscribe((articles) => {
           this.articles = articles;
-          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, 2);
+          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, this.perPage);
           this.searchFound = this.articles.length;
           this.currentCountArticles.emit(this.articles.length);
           });
@@ -89,7 +90,7 @@ export class ArticlesComponent {
         .getArticles()
         .subscribe((articles) => {
           this.articles = articles;
-          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, 2);
+          this.articlesOnPage = this.articleService.paginate(articles ,this.actualPage, this.perPage);
           this.searchFound = this.articles.length;
           this.currentCountArticles.emit(this.articles.length);
           });

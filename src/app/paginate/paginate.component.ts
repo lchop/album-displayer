@@ -13,7 +13,7 @@ export class PaginateComponent implements OnInit {
   page: number = 1;
   max_page: number = 0;
   @Input() set currentMaxPage(max_page: number) {
-    this.max_page = max_page/this.perPage;
+    this.max_page = Math.ceil(max_page/this.perPage);
   }
 
   @Output() currentPage: EventEmitter<number> = new EventEmitter();
@@ -23,7 +23,7 @@ export class PaginateComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.articleService.getCountArticles().subscribe(count => this.max_page = count / this.perPage);
+    this.articleService.getCountArticles().subscribe(count => this.max_page = Math.ceil(count/this.perPage));
   }
   
   next() {        
@@ -44,6 +44,8 @@ export class PaginateComponent implements OnInit {
     }
     else
     {
+      console.log(this.max_page);
+      
       this.page = this.max_page;
     }
     this.currentPage.emit(this.page);
