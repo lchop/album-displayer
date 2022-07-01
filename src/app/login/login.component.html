@@ -68,10 +68,10 @@
             {{ (user$ | async)?.email.split('@')[0] }}
             <svg class="ml-8" xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#911011" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="96" r="64" opacity="0.2"></circle><circle cx="128" cy="96" r="64" fill="none" stroke="#911011" stroke-miterlimit="10" stroke-width="16"></circle><path d="M31,216a112,112,0,0,1,194,0" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
           </p>
-          <div class="flex items-center justify-between mt-12">
+          <div class="md:flex block items-center justify-between mt-12">
             <button
             routerLink="/add-article"
-            class="w-52 mr-8 relative py-4 px-6 bg-secondary-600 hover:bg-secondary-500 rounded-lg leading-none flex items-center text divide-x divide-secondary-50"
+            class="w-52 md:mb-0 mb-4 mr-8 relative py-4 px-6 bg-secondary-600 hover:bg-secondary-500 rounded-lg leading-none flex items-center text divide-x divide-secondary-50"
             >
                 <span
                     class="text-secondary-50 pr-6 font-sans transition duration-200"
