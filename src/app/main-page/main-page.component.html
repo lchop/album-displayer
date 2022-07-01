@@ -15,7 +15,7 @@
         </div>
 
         <div class="inline-flex mt-8 typewriter">
-          <h2 class="text-2xl font-sans font-semibold text-primary-400 leading-snug">
+          <h2 class="text-2xl font-sans font-semibold text-primary-400 leading-snug pr-2">
             Spécialisé dans la redaction de contenue <br />
           </h2>
         </div>
@@ -46,10 +46,40 @@
     </div>
     <div class="bg-primary-700 w-2/5 min-h-screen border-l-4 border-secondary-500">
       <div class="flex flex-col items-center justify-center mt-8">
-        <img class="w-72 rounded-full" src="assets/images/portrait.jpeg" alt="greenmag">
-        <h1 class="mt-4 text-2xl font-sans font-semibold text-primary-50 leading-snug">
-          Sandrine CHOPOT, directrice de Sachem. <br />
+        <img class="w-36 rounded-full shadow-md" src="assets/images/portrait.jpeg" alt="greenmag">
+        <div class="px-4 py-4 flex">
+          <div class="flex items-start justify-start mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fdecec" viewBox="0 0 256 256"><path d="M108,144H40a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8Z" opacity="0.2"></path><path d="M224,144H156a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8Z" opacity="0.2"></path><path d="M108,144H40a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8v88a40,40,0,0,1-40,40" fill="none" stroke="#fdecec" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M224,144H156a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8v88a40,40,0,0,1-40,40" fill="none" stroke="#fdecec" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+          </div>
+          <p class="text-justify text-lg font-sans font-light text-primary-50 leading-snug">
+            Journaux nationaux ou regionaux, formation en communication ou en rédaction, web ou print,<br />
+            Nous sommes à votre disposition pour vous aider à créer votre contenu.
+          </p>
+          <div class="flex items-end justify-end ml-4">
+            <svg class="" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fdecec" viewBox="0 0 256 256"><path d="M108,144H40a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8Z" opacity="0.2"></path><path d="M224,144H156a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8Z" opacity="0.2"></path><path d="M108,144H40a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8v88a40,40,0,0,1-40,40" fill="none" stroke="#fdecec" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M224,144H156a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8h60a8,8,0,0,1,8,8v88a40,40,0,0,1-40,40" fill="none" stroke="#fdecec" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+          </div>
+        </div>
+        <div class="inline-flex items-center justify-center">
+          <h1 class="mr-4 text-2xl font-sans font-semibold text-primary-50 leading-snug">
+            Sandrine CHOPOT, <br />
+          </h1>
+          <h2 class="text-lg font-sans font-thin text-primary-100 leading-snug">
+            Directrice de Sachem.
+          </h2>
+        </div>
+      </div>
+
+      <div class="block w-full border-dashed border-secondary-500 border-t-2 mt-12">
+
+      </div>
+      <div class="flex flex-col items-center justify-center mt-12">
+        <h1 class="text-2xl font-sans font-semibold text-primary-50 leading-snug">
+          Ils nous ont fait confiance:
         </h1>
+        <div class="container">
+          <app-carousel [slides]="slides"></app-carousel>
+        </div>
+
       </div>
 
     </div>

@@ -13,8 +13,10 @@ export class MainPageComponent implements OnInit {
   public slides = [
     { src: "/assets/images/greenMag.jpeg" },
     { src: "/assets/images/guyaMag.png" },
-    { src: "/assets/images/greenMag.jpeg" },
-    { src: "/assets/images/guyaMag.png" }
+    { src: "/assets/images/Elle.png" },
+    { src: "/assets/images/ewag.webp" },
+    { src: "/assets/images/resto-avenue.png" },
+    { src: "/assets/images/shopping-fr.png" },
   ];
 
   constructor(private articleService: ArticleService) {}
