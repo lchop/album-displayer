@@ -5,12 +5,12 @@ import { AddArticlePageComponent } from './page/add-article-page/add-article.com
 import { ArticlesPageComponent } from './page/articles-page/articles-page.component';
 import { ContactPageComponent } from './page/contact-page/contact-page.component';
 import { DeleteArticleComponent } from './page/delete-article/delete-article.component';
-import { LoginComponent } from './page/login-page/login.component';
+import { LoginPageComponent } from './page/login-page/login.component';
 import { MainPageComponent } from './page/main-page/main-page.component';
 
 const routes: Routes = [
     { path: 'main', component: MainPageComponent },
-    { path: 'login', component: LoginComponent },
+    { path: 'login', component: LoginPageComponent },
     { path: 'sachem', component: AboutPageComponent },
     { path: 'articles', component: ArticlesPageComponent },
     { path: 'contact', component: ContactPageComponent },
