@@ -4,9 +4,8 @@ import { ArticleService } from '../../components/articles/articles.service';
 
 @Component({
   selector: 'app-articles-page',
-  templateUrl: './articles-page.component.html',
-  styleUrls: ['./articles-page.component.scss']
-})
+  templateUrl: './articles-page.component.html'
+})  
 export class ArticlesPageComponent {
 
   currentArticlePage = 1;

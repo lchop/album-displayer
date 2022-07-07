@@ -3,8 +3,7 @@ import { Article } from '../articles/article.model';
 
 @Component({
   selector: 'app-article-card',
-  templateUrl: './article-card.component.html',
-  styleUrls: ['./article-card.component.scss']
+  templateUrl: './article-card.component.html'
 })
 export class ArticleCardComponent implements OnInit {
   @Input() article: Article;

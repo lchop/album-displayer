@@ -3,8 +3,7 @@ import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  templateUrl: './nav-bar.component.html'
 })
 export class NavBarComponent implements OnInit {
   loggedIn = false;

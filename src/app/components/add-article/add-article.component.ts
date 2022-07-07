@@ -8,9 +8,8 @@ import { ArticleService } from 'src/app/components/articles/articles.service';
 
 @Component({
   selector: 'app-add-article',
-  templateUrl: './add-article.component.html',
-  styleUrls: ['./add-article.component.scss']
-})
+  templateUrl: './add-article.component.html'
+  })
 export class AddArticleComponent implements OnInit {
 
   id = '';

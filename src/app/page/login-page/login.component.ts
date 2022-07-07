@@ -4,11 +4,10 @@ import { Observable, Subscription } from 'rxjs';
 import { AuthService, User } from '../../auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login-page',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginPageComponent {
   username :string ='';
   password :string ='';
   loginSucess$ : Observable<boolean>;

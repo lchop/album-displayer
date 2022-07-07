@@ -4,9 +4,8 @@ import { ArticleService } from '../articles/articles.service';
 
 @Component({
   selector: 'app-paginate',
-  templateUrl: './paginate.component.html',
-  styleUrls: ['./paginate.component.scss']
-})
+  templateUrl: './paginate.component.html'
+  })
 export class PaginateComponent implements OnInit {
 
   perPage : number = 2;

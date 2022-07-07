@@ -5,9 +5,8 @@ import { ArticleService } from 'src/app/components/articles/articles.service';
 
 @Component({
   selector: 'app-search-articles',
-  templateUrl: './search-articles.component.html',
-  styleUrls: ['./search-articles.component.scss']
-})
+  templateUrl: './search-articles.component.html'
+  })
 export class SearchArticlesComponent implements OnInit {
   
   @Output() articles: EventEmitter<Article[]> = new EventEmitter();

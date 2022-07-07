@@ -3,9 +3,8 @@ import { interval, Observable, take } from 'rxjs';
 
 @Component({
   selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
-})
+  templateUrl: './carousel.component.html'
+  })
 export class CarouselComponent implements OnInit {
 
   @Input() slides!: any[];

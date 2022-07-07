@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { MainPageComponent } from './page/main-page/main-page.component';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './page/login/login.component';
+import { LoginPageComponent } from './page/login-page/login.component';
 import { PaginateComponent } from './components/paginate/paginate.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -50,7 +50,7 @@ import { SearchArticlesComponent } from './components/search-articles/search-art
     AppComponent,
     ArticlesComponent,
     MainPageComponent,
-    LoginComponent,
+    LoginPageComponent,
     PaginateComponent,
     NavBarComponent,
     FooterComponent,
