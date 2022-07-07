@@ -17,7 +17,6 @@ const routes: Routes = [
     { path: 'add-article', component: AddArticlePageComponent },
     { path: 'delete-article', component: DeleteArticleComponent },
     { path: '**', component: MainPageComponent}
-
 ];
 
 @NgModule({
