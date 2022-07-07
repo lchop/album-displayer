@@ -1,0 +1,18 @@
+<div class="container max-w-full max-h-full bg-primary-300">
+  <div
+    class="bg-primary-50 py-8 px-4 flex flex-col items-center justify-center min-h-screen"
+  >
+    <div
+      class=" bg-primary-50 border-dashed border-primary-700 border-2 rounded-xl py-12 lg:px-28 px-8 shadow-xl md:w-246"
+    >
+      <div *ngIf="!articleAdded; else articleAddedSuccess" class="container w-full">
+        <app-add-article
+        (articleAdded)="onArticleAdded($event)">
+        </app-add-article>
+      </div>
+      <ng-template #articleAddedSuccess>
+        <app-success-add-article-page></app-success-add-article-page>
+      </ng-template>
+    </div>
+  </div>
+</div>

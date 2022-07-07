@@ -1,0 +1,16 @@
+<div class="container max-w-screen-2xl mx-auto">
+  <div class="flex items-center justify-center">
+    <ul
+      class="grid md:grid-cols-2 grid-cols-1 grid-rows-1 gap-20 place-content-evenly max-w-screen-xl"
+    >
+      <li
+        class="col-span-1 row-span-1 bg-transparent px-4"
+        *ngFor="let article of articlesOnPage"
+      >
+        <app-article-card
+        [article]="article">
+        </app-article-card>
+      </li>
+    </ul>
+  </div>
+</div>

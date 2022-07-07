@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArticlesComponent } from './articles/articles.component';
-import { MainPageComponent } from './main-page/main-page.component';
+import { ArticlesComponent } from './components/articles/articles.component';
+import { MainPageComponent } from './page/main-page/main-page.component';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { PaginateComponent } from './paginate/paginate.component';
+import { LoginComponent } from './page/login/login.component';
+import { PaginateComponent } from './components/paginate/paginate.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire/compat';
@@ -16,19 +16,22 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AuthService } from './auth.service';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { FooterComponent } from './footer/footer.component';
-import { AboutPageComponent } from './about-page/about-page.component';
-import { ArticlesPageComponent } from './articles-page/articles-page.component';
-import { CarouselComponent } from './carousel/carousel.component';
-import { ContactPageComponent } from './contact-page/contact-page.component';
-import { AddArticleComponent } from './add-article/add-article.component';
+import { NavBarComponent } from './partials/nav-bar/nav-bar.component';
+import { FooterComponent } from './partials/footer/footer.component';
+import { AboutPageComponent } from './page/about-page/about-page.component';
+import { ArticlesPageComponent } from './page/articles-page/articles-page.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { ContactPageComponent } from './page/contact-page/contact-page.component';
+import { AddArticlePageComponent } from './page/add-article-page/add-article.component';
 import { DatePipe } from '@angular/common';
 import { environment } from 'src/environments/environment';
-import { DeleteArticleComponent } from './delete-article/delete-article.component';
-import { UploadFileComponent } from './upload-file/upload-file.component';
-import { ArticleCardComponent } from './article-card/article-card.component';
-import { ContactService } from './contact-page/contact.service';
+import { DeleteArticleComponent } from './page/delete-article/delete-article.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { ArticleCardComponent } from './components/article-card/article-card.component';
+import { ContactService } from './page/contact-page/contact.service';
+import { AddArticleComponent } from './components/add-article/add-article.component';
+import { SuccessAddArticlePageComponent } from './page/success-add-article-page/success-add-article-page.component';
+import { SearchArticlesComponent } from './components/search-articles/search-articles.component';
 
 
 // const firebaseConfig = {
@@ -55,10 +58,13 @@ import { ContactService } from './contact-page/contact.service';
     ArticlesPageComponent,
     CarouselComponent,
     ContactPageComponent,
-    AddArticleComponent,
+    AddArticlePageComponent,
     DeleteArticleComponent,
     UploadFileComponent,
     ArticleCardComponent,
+    AddArticleComponent,
+    SuccessAddArticlePageComponent,
+    SearchArticlesComponent,
   ],
   imports: [
     BrowserModule,

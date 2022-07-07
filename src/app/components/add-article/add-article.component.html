@@ -1,0 +1,135 @@
+<div class="flex items-center justify-center mb-4">
+    <h1 class="text-primary-700 text-3xl font-bold">Ajouter un article</h1>
+    <div class="flex justify-center items-center ml-8">
+      <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#911011" viewBox="0 0 256 256"><circle cx="128" cy="128" r="96" opacity="0.2"></circle><circle cx="128" cy="128" r="96" fill="none" stroke="#911011" stroke-miterlimit="10" stroke-width="16"></circle><line x1="88" y1="128" x2="168" y2="128" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="128" y1="88" x2="128" y2="168" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
+    </div>
+
+  </div>
+  <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
+    <div class="mb-4">
+      <label
+        class="block text-primary-700 text-sm font-bold mb-2"
+        for="username"
+      >
+        Titre *
+      </label>
+      <input
+        class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
+        name="title"
+        id="title"
+        type="text"
+        maxlength="100"
+        placeholder="Titre"
+        aria-label="Tilte"
+        required
+        [(ngModel)]="title"
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="block text-primary-700 text-sm font-bold mb-2"
+        for="password"
+      >
+        Description *
+      </label>
+      <textarea
+        class="justify-start w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100 h-56 overflow-y-scroll"
+        name="description"
+        required
+        id="description"
+        type="description"
+        maxlength="350"
+        placeholder="Entrer une description de votre article"
+        aria-label="Description"
+        [(ngModel)]="description"
+      ></textarea>
+    </div>
+    <div class="mb-4">
+      <label
+        class="block text-primary-700 text-sm font-bold mb-2"
+        for="password"
+      >
+        Date de creation *
+      </label>
+      <input
+        class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
+        name="creationDate"
+        required
+        id="creationDate"
+        min="2018-01-01"
+        max="2030-12-31"
+        type="date"
+        aria-label="CreationDate"
+        [ngModel]="creationDate | date: 'yyyy-MM-dd'"
+        (ngModelChange)="creationDate = $event"
+      />
+    </div>
+    <div class="mb-4 flex justify-between items-center">
+      <app-upload-file
+      [type]="'image'"
+      (uploadFileName)="onUploadImage($event)"
+      (progress)="onProgressUploadImage($event)"
+      >
+      </app-upload-file>
+
+      <app-upload-file
+      [type]="'file'"
+      (uploadFileName)="onUploadFile($event)"
+      (progress)="onProgressUploadFile($event)"
+      >
+      </app-upload-file>
+      
+      <!-- <progress max="100" [value]="(uploadProgress | async)"></progress> -->
+    </div>
+    
+    <div class="flex items-center justify-center my-8">
+      <button
+      [disabled]="(formSearch.invalid) || ((progressUploadImage | async) < 100 && imageName !== '')"
+      type="submit"
+      class="relative py-4 px-6 disabled:bg-primary-100 disabled:hover:bg-primary-100 bg-secondary-600 hover:bg-secondary-500 rounded-lg leading-none flex items-center text divide-x divide-secondary-50"
+      >
+          <span
+              class="text-secondary-50 pr-6 font-sans transition duration-200"
+              > Ajouter</span
+          > 
+          <span class="flex items-center space-x-5 pl-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" opacity="0.2"></circle><polyline points="172 104 113.3 160 84 132" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><circle cx="128" cy="128" r="96" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle></svg>
+          </span>
+      </button>
+    </div>
+  </form>
+    <a
+      routerLink="/login"
+      class="underline text-primary-500 hover:text-primary-600 inline-flex items-center justify-center"
+    >
+      <svg
+      class="mr-1"
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        fill="#ba2525"
+        viewBox="0 0 256 256"
+      >
+        <rect width="256" height="256" fill="none"></rect>
+        <line
+          x1="216"
+          y1="128"
+          x2="40"
+          y2="128"
+          fill="none"
+          stroke="#ba2525"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        ></line>
+        <polyline
+          points="112 56 40 128 112 200"
+          fill="none"
+          stroke="#ba2525"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        ></polyline>
+      </svg>
+      Back
+    </a>
