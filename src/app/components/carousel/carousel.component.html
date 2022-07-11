@@ -1,0 +1,25 @@
+<!-- carousel -->
+<div class="flex flex-1 items-center justify-center py-6 px-4">
+  <div class="relative h-40 w-96 overflow-hidden border-1">
+    <ng-container *ngFor="let slide of slides; let i = index">
+      <div class="duration-1000 ease-in-out">
+          <img
+          *ngIf="i == 0; else hidden"
+          [src]="slide.src"
+          class="absolute w-full h-full top-0 left-0 object-scale-down border-1 hover:scale-105"
+        />
+      </div>
+      
+      <ng-template #hidden>
+        <div class="duration-700 ease-in-out">
+          <img
+          [src]="slide.src"
+          class=" shadow-md absolute hidden w-full h-full top-0 left-0 object-scale-down border-1 hover:scale-105"
+        />
+        </div>
+        
+      </ng-template>
+      
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="flex flex-col items-center justify-center pt-2 px-4">
+    <form class="inline-flex" (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
+      <input
+        class="font-thin text-secondary-600 px-2 py-2 outline-none focus:ring-primary-200 focus:ring-1 rounded-l-md placeholder-primary-200 bg-white"
+        (keyup)="onTyping($event)"
+        name="word"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button
+        [disabled]="formSearch.invalid"
+        type="submit"
+        class="relative py-2 px-4 bg-secondary-600 hover:bg-secondary-500 rounded-r-md ring-1 ring-secondary-500 leading-none flex items-center"
+        >
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="116" cy="116" r="84" opacity="0.2"></circle><circle cx="116" cy="116" r="84" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="175.4" y1="175.4" x2="224" y2="224" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>        
+          </span>
+        </button>
+    </form>
+    <div *ngIf="searchFound > 0; else nothingFound">
+      <div class="flex items-center justify-center py-4 px-4">
+        <h2 class="font-sans font-bold text-center text-primary-700">
+          {{ searchFound }} articles trouvés
+        </h2>
+      </div>
+    </div>
+    <ng-template #nothingFound>
+      <div class="flex items-center justify-center py-4 px-4">
+        <h2 class="font-sans font-bold text-center text-primary-700">
+          Aucun article trouvés
+        </h2>
+      </div>
+    </ng-template>
+  </div>

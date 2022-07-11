@@ -1,0 +1,17 @@
+<div class="bg-primary-50 min-w-full min-h-screen">
+    <div class="flex items-center justify-center flex-col">
+        <app-search-articles 
+            (articles)="onSearchArticles($event)"
+            (updateCurrentPage)="onUpdateCurrentPage($event)">
+        </app-search-articles>
+        <app-articles 
+            [inputCurrentPage]="currentArticlePage"
+            [inputArticles]="articles">
+        </app-articles>
+        <app-paginate class="mt-4"
+            [inputCurrentPage]="currentArticlePage"
+            [currentMaxPage]="currentCountArticles" 
+            (currentPage)="setCurrentArticlePage($event)">
+        </app-paginate>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<div class="container max-w-full max-h-full bg-primary-50">
+  <div
+    class="bg-primary-50 flex flex-col min-w-screen min-h-screen items-center justify-center"
+  >
+    <div class="flex flex-col items-center justify-center px-4">
+      <div
+        *ngIf="!(loginSucess$ | async); else logIn"
+        class="bg-primary-50 border-dashed border-primary-700 border-2 rounded-xl py-12 lg:px-28 px-20 shadow-xl"
+      >
+      <p
+      class="md:text-3xl text-xl font-bold leading-7 text-center text-primary-700 inline-flex justify-center items-center"
+    >
+      Login
+      <svg class="ml-8" xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#911011" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polyline points="94 170 136 128 94 86" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="24" y1="128" x2="136" y2="128" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M136,40h56a8,8,0,0,1,8,8V208a8,8,0,0,1-8,8H136" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+      </p>
+        <form (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
+          <div class="mb-8 mt-12">
+            <label
+              class="w-24 text-primary-700 text-sm font-bold mb-4"
+              for="username"
+            >
+              Username
+            </label>
+            <input
+              class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
+              name="username"
+              id="username"
+              type="text"
+              placeholder="Username"
+              aria-label="Username"
+              [(ngModel)]="username"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              class="text-primary-700 text-sm font-bold mb-2"
+              for="password"
+            >
+              Password
+            </label>
+            <input
+              class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
+              name="password"
+              id="password"
+              type="password"
+              placeholder="******************"
+              aria-label="Password"
+              [(ngModel)]="password"
+            />
+          </div>
+          <div class="flex items-center justify-center mt-8">
+            <button
+              [disabled]="formSearch.invalid"
+              class="bg-primary-500 hover:bg-primary-600 text-white font-thin py-2 px-4 rounded-xl"
+              type="submit"
+            >
+              Log In
+            </button>
+          </div>
+        </form>
+      </div>
+      <ng-template #logIn>
+        
+       <div class="bg-primary-50 border-dashed border-primary-700 border-2 rounded-xl py-12 lg:px-28 px-8 shadow-xl">
+          <p
+        class="md:text-3xl text-xl font-bold leading-7 text-center text-primary-700 inline-flex justify-center items-center"
+          >
+            {{ (user$ | async)?.email.split('@')[0] }}
+            <svg class="ml-8" xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#911011" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="96" r="64" opacity="0.2"></circle><circle cx="128" cy="96" r="64" fill="none" stroke="#911011" stroke-miterlimit="10" stroke-width="16"></circle><path d="M31,216a112,112,0,0,1,194,0" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+          </p>
+          <div class="md:flex block items-center justify-between mt-12">
+            <button
+            routerLink="/add-article"
+            class="w-52 md:mb-0 mb-4 mr-8 relative py-4 px-6 bg-secondary-600 hover:bg-secondary-500 rounded-lg leading-none flex items-center text divide-x divide-secondary-50"
+            >
+                <span
+                    class="text-secondary-50 pr-6 font-sans transition duration-200"
+                    > Ajouter un article</span
+                > 
+                <span class="flex items-center space-x-5 pl-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="152 32 152 88 208 88 152 32" opacity="0.2"></polygon><path d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><polyline points="152 32 152 88 208 88" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="104" y1="152" x2="152" y2="152" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="128" y1="128" x2="128" y2="176" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
+                </span>
+            </button>
+            <button
+            routerLink="/delete-article"
+            class="w-52 relative py-4 px-6 bg-secondary-600 hover:bg-secondary-500 rounded-lg leading-none flex items-center text divide-x divide-secondary-50"
+            >
+                <span
+                    class="text-secondary-50 pr-6 font-sans transition duration-200"
+                    > Supprimer un article</span
+                > 
+                <span class="flex items-center space-x-5 pl-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M200,56V208a8,8,0,0,1-8,8H64a8,8,0,0,1-8-8V56Z" opacity="0.2"></path><line x1="216" y1="56" x2="40" y2="56" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="104" y1="104" x2="104" y2="168" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="152" y1="104" x2="152" y2="168" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M200,56V208a8,8,0,0,1-8,8H64a8,8,0,0,1-8-8V56" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+                </span>
+            </button>   
+          </div>
+       </div>
+        <a
+          class="text-primary-500 hover:text-primary-400 font-thin underline cursor-pointer"
+          (click)="onLogout()"
+        >
+        <p class="text-center mt-4">
+          Log Out
+        </p>
+        </a> 
+      </ng-template>
+    </div>
+  </div>
+</div>
