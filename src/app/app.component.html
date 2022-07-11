@@ -1,17 +1,12 @@
 <div class="w-full h-full">
-  <div class="flex-none">
     <app-nav-bar></app-nav-bar>
-  </div>
 
   <!-- user app view -->
-  <div class="h-full pl-0 bg-primary-50 overflow-auto">
+  <div class=" min-w-full min-h-screen bg-primary-500">
     <router-outlet></router-outlet>
   </div>
   <!-- bug on scroll for footer used hack -->
-  <div class="md:mb-0 mb-48 bg-white"> 
   <app-footer></app-footer>
-
-  </div>
 
 </div>
   
