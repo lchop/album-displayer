@@ -8,6 +8,9 @@ import { AuthService } from '../../auth.service';
 export class NavBarComponent implements OnInit {
   loggedIn = false;
   logInName= '';
+  mainClicked = false;
+  aboutClicked = false;
+  articlesClicked = false;
 
   constructor(private auth: AuthService) {
     this.auth.isLogIn$.subscribe(loggedIn => {
@@ -22,5 +25,29 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
+  onClick(name: string){
+    switch(name){
+      case 'accueil':
+        this.mainClicked = true;
+        this.aboutClicked = false;
+        this.articlesClicked = false;
+        break;
+      case 'about':
+        this.aboutClicked = true;
+        this.mainClicked = false;
+        this.articlesClicked = false;
+        break;
+      case 'articles':
+        this.articlesClicked = true;
+        this.mainClicked = false;
+        this.aboutClicked = false;
+        break;
+      default:
+        this.mainClicked = false;
+        this.aboutClicked = false;
+        this.articlesClicked = false;
+        break;
+    }
+  }
 }
