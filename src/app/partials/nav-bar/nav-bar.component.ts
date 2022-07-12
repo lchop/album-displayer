@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class NavBarComponent implements OnInit {
   aboutClicked = false;
   articlesClicked = false;
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private router: Router) {
     this.auth.isLogIn$.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
       if (loggedIn) {
@@ -24,21 +26,24 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-  
-  onClick(name: string){
-    switch(name){
-      case 'accueil':
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: any) => {
+      switch(event.url){
+      case '/':
         this.mainClicked = true;
         this.aboutClicked = false;
         this.articlesClicked = false;
         break;
-      case 'about':
-        this.aboutClicked = true;
-        this.mainClicked = false;
+      case '':
+        this.mainClicked = true;
+        this.aboutClicked = false;
         this.articlesClicked = false;
         break;
-      case 'articles':
+        case '/sachem':
+          this.articlesClicked = false;
+          this.mainClicked = false;
+          this.aboutClicked = true;
+          break;
+      case '/articles':
         this.articlesClicked = true;
         this.mainClicked = false;
         this.aboutClicked = false;
@@ -48,6 +53,7 @@ export class NavBarComponent implements OnInit {
         this.aboutClicked = false;
         this.articlesClicked = false;
         break;
-    }
+      }
+    });
   }
 }

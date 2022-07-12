@@ -3,22 +3,20 @@
     <div class="flex justify-center items-center">
       <li
       class="mr-2"
-      *ngIf="!mainClicked; else mainClickedElse;"
-      (click)="onClick('accueil')">
+      *ngIf="!mainClicked; else mainClickedElse;">
         <a
           routerLink="/"
-          class="block text-sm py-2 px-4 font-sans border-transparent text-primary-50 hover:text-primary-600 border-2 border-dashed hover:border-b-primary-600 bg-transparent"
+          class="block text-md py-2 md:px-4 px-2 font-sans border-transparent text-primary-50 hover:text-primary-600 border-2 border-dashed hover:border-b-primary-600 bg-transparent"
           >Accueil</a
         >
       </li>
       <ng-template #mainClickedElse>
         <li
         class="mr-2"
-        (click)="onClick('accueil')"
         >
           <a
             routerLink="/"
-            class="block text-sm py-2 px-4 font-sans text-primary-600 border-2 rounded-lg border-dashed border-primary-600 bg-transparent"
+            class="block text-md py-2 md:px-4 px-2 font-sans text-primary-600 border-2 rounded-lg border-dashed border-primary-600 bg-transparent"
             >Accueil</a
           >
         </li>
@@ -26,21 +24,19 @@
       
       <li
       class="mr-2"
-      *ngIf="!aboutClicked; else aboutClickedElse"
-      (click)="onClick('about')">
+      *ngIf="!aboutClicked; else aboutClickedElse">
         <a
           routerLink="/sachem"
-          class="block text-sm py-2 px-4 font-sans border-transparent text-primary-50 hover:text-primary-600 border-2 border-dashed hover:border-b-primary-600 bg-transparent"
+          class="block text-md py-2 md:px-4 px-2 font-sans border-transparent text-primary-50 hover:text-primary-600 border-2 border-dashed hover:border-b-primary-600 bg-transparent"
           >SaCh'm</a
         >
       </li>
       <ng-template #aboutClickedElse>
         <li
-        class="mr-2"
-        (click)="onClick('about')">
+        class="mr-2">
           <a
             routerLink="/sachem"
-            class="block text-sm py-2 px-4 font-sans text-primary-600 border-2 rounded-lg border-dashed border-primary-600 bg-transparent"
+            class="block text-md py-2 md:px-4 px-2 font-sans text-primary-600 border-2 rounded-lg border-dashed border-primary-600 bg-transparent"
             >SaCh'm</a
           >
         </li>
@@ -48,21 +44,19 @@
       
       <li
       class="mr-2"
-      *ngIf="!articlesClicked; else articlesClickedElse"
-      (click)="onClick('articles')">
+      *ngIf="!articlesClicked; else articlesClickedElse">
         <a
           routerLink="/articles"
-          class="block text-md py-2 px-4 font-sans border-transparent text-primary-50 hover:text-primary-600 border-2 border-dashed hover:border-b-primary-600 bg-transparent"
+          class="block text-md py-2 md:px-4 px-2 font-sans border-transparent text-primary-50 hover:text-primary-600 border-2 border-dashed hover:border-b-primary-600 bg-transparent"
           >Articles</a
         >
       </li>
       <ng-template #articlesClickedElse>
         <li 
-        class="mr-2"
-        (click)="onClick('articles')">
+        class="mr-2">
         <a
           routerLink="/articles"
-          class="block text-md py-2 px-4 font-sans text-primary-600 border-2 rounded-lg border-dashed border-primary-600 bg-transparent"
+          class="block text-md py-2 md:px-4 px-2 font-sans text-primary-600 border-2 rounded-lg border-dashed border-primary-600 bg-transparent"
           >Articles</a
         >
       </li>
