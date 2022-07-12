@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   })
 export class AboutPageComponent implements OnInit {
 
+  public slides = [
+    { src: "/assets/images/greenMag.jpeg" },
+    { src: "/assets/images/guyaMag.png" },
+    { src: "/assets/images/greenMag.jpeg" },
+    { src: "/assets/images/guyaMag.png" }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
