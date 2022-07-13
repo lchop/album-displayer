@@ -3,21 +3,21 @@
     <div class="block md:w-138 md:h-92 bg-primary-800 opacity-40 text-left rounded-b-lg px-4 py-8">
         <h2 class="md:h-12 px-1 py-2 font-bold text-white">
         Titre:
-        <span class="font-thin text-white">{{ article.title }}</span>
+        <span class="font-thin text-white text-left">{{ article.title }}</span>
         </h2>
         <h2 class="md:h-36 px-1 py-2 font-bold text-white">
         Description:
-        <span class="font-thin text-white">{{ article.description }}</span>
+        <span class="font-thin text-white text-left">{{ article.description }}</span>
         </h2>
         <h2 class="px-1 py-2 font-bold text-white">
         Date de publication:
-        <span class="font-thin text-white">{{ article.creationDate | date :'dd/MM/YYYY' }}</span>
+        <span class="font-thin text-white text-left">{{ article.creationDate | date :'dd/MM/YYYY' }}</span>
         </h2>
         <h2 class="md:h-14 px-1 py-2 font-bold text-white">
         Télécharger l'article complet:
         <a *ngIf="hasFile; else hasNoFile" class="font-thin text-primary-100 underline" target="_blank" href="{{ article.fileName }}" download> {{ article.title }} </a>
         <ng-template #hasNoFile>
-        <span class="font-thin text-white">Pas de fichier associé</span>
+        <span class="font-thin text-white text-left">Pas de fichier associé</span>
         </ng-template>
         
     </h2>
