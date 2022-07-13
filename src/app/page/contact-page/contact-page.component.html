@@ -12,9 +12,14 @@
           <form (ngSubmit)="onSubmit(formContact)" #formContact="ngForm">
             <div class="md:flex items-center">
               <div class="md:w-72 flex flex-col">
-                <label for="name" class="text-base font-semibold leading-none text-primary-800"
-                  >Nom *</label
+                <label *ngIf="correctName; else wrongName;" for="name" class="text-base font-semibold leading-none text-primary-800"
+                  > Nom *</label
                 >
+                <ng-template #wrongName>
+                  <label for="name" class="text-base leading-none text-red-500 font-extrabold italic"
+                  > Nom *</label
+                >
+                </ng-template>
                 <input
                   class="focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 mt-4 bg-white rounded placeholder-primary-100"
                   name="name"
@@ -24,15 +29,21 @@
                   minlength="2"
                   placeholder="Compléter votre nom"
                   arial-label="name"
+                  (keyup)="onKeyUp('name')"
                   required
                   #prmName = "ngModel"
                   [(ngModel)]="name"
                 />
               </div>
               <div class="md:w-72 flex flex-col md:ml-6 md:mt-0 mt-4">
-                <label for="email" class="text-base font-semibold leading-none text-primary-800"
-                  >Email *</label
+                <label *ngIf="correctMail; else wrongMail;" for="mail" class="text-base font-semibold leading-none text-primary-800"
+                  > Mail *</label
                 >
+                <ng-template #wrongMail>
+                  <label for="mail" class="text-base leading-none text-red-500 font-extrabold"
+                  > Mail *</label
+                >
+                </ng-template>
                 <input
                 
                   class="focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 mt-4 bg-white rounded placeholder-primary-100"
@@ -43,6 +54,7 @@
                   maxlength="100"
                   placeholder="Compléter votre email"
                   arial-label="email"
+                  (keyup)="onKeyUp('email')"
                   required
                   email #prmEmail = "ngModel"
                   [(ngModel)]="email"
@@ -51,9 +63,15 @@
             </div>  
             <div class="md:flex items-center mt-8">
               <div class="md:w-72 flex flex-col">
-                <label for="company" class="text-base font-semibold leading-none text-primary-800"
+                <label *ngIf="correctCompany; else wrongCompany;" for="company" class="text-base font-semibold leading-none text-primary-800"
                   > Entreprise *</label
                 >
+                <ng-template #wrongCompany>
+                  <label for="company" class="text-base leading-none text-red-500 font-extrabold italic"
+                  > Entreprise *</label
+                >
+                </ng-template>
+                
                 <input
                   class=" focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 mt-4 bg-white rounded placeholder-primary-100"
                   name="company"
@@ -63,6 +81,7 @@
                   maxlength="100"
                   placeholder="Nom de votre entreprise"
                   arial-label="company"
+                  (keyup)="onKeyUp('company')"
                   required
                   #prmCompany = "ngModel"
                   [(ngModel)]="company"
@@ -71,9 +90,14 @@
             </div>
             <div>
               <div class="w-full flex flex-col mt-8">
-                <label for="message" class="text-base font-semibold leading-none text-primary-800"
-                  >Message *</label
+                <label *ngIf="correctMessage; else wrongMessage;" for="prmMessage" class="text-base font-semibold leading-none text-primary-800"
+                  > Message *</label
                 >
+                <ng-template #wrongMessage>
+                  <label for="message" class="text-base leading-none text-red-500 font-extrabold italic"
+                  > Message *</label
+                >
+                </ng-template>
                 <textarea
                 class=" outline-none h-36 text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 mt-4 rounded focus:ring-2 focus:ring-primary-700  border-primary-200 placeholder-primary-100 resize-none bg-white"
                 name="message"
@@ -84,6 +108,7 @@
                 maxlength="500"
                 placeholder="Entrer votre message"
                 aria-label="Message"
+                (keyup)="onKeyUp('message')"
                 #prmMessage = "ngModel"
                 [(ngModel)]="message"
                 ></textarea>
@@ -94,7 +119,7 @@
               
               <button
               *ngIf="!waitResponse"
-              [disabled]="(formContact.invalid) || waitResponse"
+              [disabled]="(formContact.invalid) || waitResponse || isDisabled"
               type = "submit"
               class="relative py-4 px-6 disabled:bg-primary-100 disabled:hover:bg-primary-100 bg-secondary-600 hover:bg-secondary-500 rounded-lg leading-none flex items-center text divide-x divide-secondary-50"
               >
