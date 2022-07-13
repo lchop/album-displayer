@@ -9,19 +9,14 @@ import { AuthService } from '../../auth.service';
 })
 export class NavBarComponent implements OnInit {
   loggedIn = false;
-  logInName= '';
   mainClicked = false;
   aboutClicked = false;
   articlesClicked = false;
+  loginClicked = false;
 
   constructor(private auth: AuthService, private router: Router) {
     this.auth.isLogIn$.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
-      if (loggedIn) {
-        this.auth.user$.subscribe(user => {
-          this.logInName = user.email.search('@') > 0 ? user.email.substring(0, user.email.search('@')) : user.email;
-        });
-      }
     });
   }
 
@@ -32,26 +27,37 @@ export class NavBarComponent implements OnInit {
         this.mainClicked = true;
         this.aboutClicked = false;
         this.articlesClicked = false;
+        this.loginClicked = false;
         break;
       case '':
         this.mainClicked = true;
         this.aboutClicked = false;
         this.articlesClicked = false;
+        this.loginClicked = false;
         break;
         case '/sachem':
           this.articlesClicked = false;
           this.mainClicked = false;
           this.aboutClicked = true;
+          this.loginClicked = false;
           break;
       case '/articles':
         this.articlesClicked = true;
         this.mainClicked = false;
         this.aboutClicked = false;
+        this.loginClicked = false;
+        break;
+      case '/login':
+        this.loginClicked = true;
+        this.mainClicked = false;
+        this.aboutClicked = false;
+        this.articlesClicked = false;
         break;
       default:
         this.mainClicked = false;
         this.aboutClicked = false;
         this.articlesClicked = false;
+        this.loginClicked = false;
         break;
       }
     });

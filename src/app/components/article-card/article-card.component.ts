@@ -6,7 +6,18 @@ import { Article } from '../articles/article.model';
   templateUrl: './article-card.component.html'
 })
 export class ArticleCardComponent implements OnInit {
-  @Input() article: Article;
+
+  hasFile = true;
+  article: Article;
+  @Input() set inputArticle(article: Article) {
+    if (!article.fileName){
+      this.hasFile = false;
+    }
+    if (!article.imageName){
+      article.imageName = 'assets/images/default-image.png';
+    }
+   this.article = article;
+ }
 
   constructor() { }
 

@@ -1,4 +1,4 @@
-<nav class="bg-secondary-600 px-8 py-2 min-w-full">
+<nav class="bg-secondary-600 px-8 py-2 min-w-full h-20 md:h-16">
   <ul class="flex items-center justify-between mt-0 text-sm font-medium">
     <div class="flex justify-center items-center">
       <li
@@ -75,18 +75,30 @@
                       <svg class="hidden md:block w-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" opacity="0.2"></circle><circle cx="128" cy="128" r="96" fill="none" stroke="#fafafa" stroke-miterlimit="10" stroke-width="16"></circle><polyline points="134.1 161.9 168 128 134.1 94.1" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="88" y1="128" x2="168" y2="128" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
                    </span>
               </button>
-          
       </li>
 
       <li>
           <a
-          *ngIf="loggedIn;"
+          *ngIf="loggedIn && !loginClicked; else loginClickedElse"
           routerLink="/login"
-          class="break-all block w-16 md:w-24 py-2 mr-4 pl-3 font-sans text-slate-50 border-b-2 border-transparent hover:border-slate-100 hover:text-slate-100 bg-transparent"
+          class="block text-md py-2 px-2 font-sans border-transparent text-primary-50 hover:text-primary-600 border-2 border-dashed hover:border-b-primary-600 bg-transparent"
           >
-          {{ logInName }}</a
+          <svg class="hidden md:block" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#911011" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="96" r="64" opacity="0.2"></circle><circle cx="128" cy="96" r="64" fill="none" stroke="#911011" stroke-miterlimit="10" stroke-width="16"></circle><path d="M31,216a112,112,0,0,1,194,0" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+          </a
         >
       </li>
+      <ng-template #loginClickedElse>
+          <li>
+          <a
+            routerLink="/login"
+            class="hidden md:block text-md py-2 px-2 font-sans text-primary-600 border-2 rounded-lg border-dashed border-primary-600 bg-transparent"
+            >
+              <svg class="hidden md:block" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#911011" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="96" r="64" opacity="0.2"></circle><circle cx="128" cy="96" r="64" fill="none" stroke="#911011" stroke-miterlimit="10" stroke-width="16"></circle><path d="M31,216a112,112,0,0,1,194,0" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+            </a
+          >
+        </li>
+      </ng-template>
+      
 
     </div>
     
