@@ -29,12 +29,14 @@ export class NavBarComponent implements OnInit {
         this.aboutClicked = false;
         this.articlesClicked = false;
         this.loginClicked = false;
+        this.contactClicked = false;
         break;
       case '':
         this.mainClicked = true;
         this.aboutClicked = false;
         this.articlesClicked = false;
         this.loginClicked = false;
+        this.contactClicked = false;
         break;
         case '/sachem':
           this.articlesClicked = false;
