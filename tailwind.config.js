@@ -56,7 +56,7 @@ module.exports = {
         'spin-slow': 'spin 45s ease infinite',
         'pulse-slow': 'pulse 5s ease infinite',
         'tilt': 'tilt 5s linear infinite',
-        'blob' : 'blob 10s linear infinite',
+        'blob' : 'blob 12s linear infinite',
       },
       keyframes: 
       {
@@ -65,24 +65,21 @@ module.exports = {
             transform: "rotate(0deg)"
           },
           "25%": {
-            transform: "rotate(2deg)"
+            transform: "rotate(5deg)"
           },
           "75%": {
-            transform: "rotate(-2deg)"
+            transform: "rotate(-5deg)"
           }
         },
         blob: {
-          "0%": {
-            transform: "translate(0px,0px) scale(1)"
+          "0%, 100%": {
+            transform: "translate(2px,0px) scale(1)"
           },
           "33%": {
-            transform: "translate(30px,-50px) scale(1.1)"
+            transform: "translate(30px,0px) scale(1.1)"
           },
           "66%": {
-            transform: "translate(-20px,20px) scale(0.9)"
-          },
-          "100%": {
-            transform: "translate(0px,0px) scale(1)"
+            transform: "translate(-20px,0px) scale(1.1)"
           }
         }
       },

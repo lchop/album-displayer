@@ -12,6 +12,7 @@ export class NavBarComponent implements OnInit {
   mainClicked = false;
   aboutClicked = false;
   articlesClicked = false;
+  contactClicked = false;
   loginClicked = false;
 
   constructor(private auth: AuthService, private router: Router) {
@@ -40,20 +41,31 @@ export class NavBarComponent implements OnInit {
           this.mainClicked = false;
           this.aboutClicked = true;
           this.loginClicked = false;
+          this.contactClicked = false;
           break;
       case '/articles':
         this.articlesClicked = true;
         this.mainClicked = false;
         this.aboutClicked = false;
         this.loginClicked = false;
+        this.contactClicked = false;
         break;
       case '/login':
         this.loginClicked = true;
         this.mainClicked = false;
         this.aboutClicked = false;
         this.articlesClicked = false;
+        this.contactClicked = false;
+        break;
+      case '/contact':
+        this.contactClicked = true;
+        this.loginClicked = false;
+        this.mainClicked = false;
+        this.aboutClicked = false;
+        this.articlesClicked = false;
         break;
       default:
+        this.contactClicked = false;
         this.mainClicked = false;
         this.aboutClicked = false;
         this.articlesClicked = false;
