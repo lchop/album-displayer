@@ -4,8 +4,7 @@ import { ArticleService } from '../../components/articles/articles.service';
 
 @Component({
   selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  templateUrl: './main-page.component.html'
 })
 export class MainPageComponent implements OnInit {
   lastArticle = new Article();
