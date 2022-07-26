@@ -73,13 +73,13 @@ module.exports = {
         },
         blob: {
           "0%, 100%": {
-            transform: "translate(2px,0px) scale(1)"
+            transform: "translate(2px,0px) rotate(0deg)"
           },
           "33%": {
-            transform: "translate(30px,0px) scale(1.1)"
+            transform: "translate(30px,00px) rotate(10deg)"
           },
           "66%": {
-            transform: "translate(-20px,0px) scale(1.1)"
+            transform: "translate(-10px,0px) rotate(-5deg)"
           }
         }
       },
