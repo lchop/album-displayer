@@ -16,6 +16,8 @@ export class AddArticleComponent implements OnInit {
   status = '';
   title = '';
   description= '';
+  journal= '';
+  link= '';
   creationDate = new Date();
   fileName = '';
   imageName = '';
@@ -35,6 +37,8 @@ export class AddArticleComponent implements OnInit {
     const newArticle : Article = {
                               'title' : form.value['title'], 
                               'description': form.value['description'], 
+                              'journal': form.value['journal'], 
+                              'link': form.value['link'], 
                               'creationDate': form.value['creationDate'],
                               'imageName': this.imageName,
                               'fileName': this.fileName};

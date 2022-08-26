@@ -28,7 +28,7 @@
     <div class="mb-4">
       <label
         class="block text-primary-700 text-sm font-bold mb-2"
-        for="password"
+        for="description"
       >
         Description *
       </label>
@@ -43,6 +43,44 @@
         aria-label="Description"
         [(ngModel)]="description"
       ></textarea>
+    </div>
+    <div class="mb-4">
+      <label
+        class="block text-primary-700 text-sm font-bold mb-2"
+        for="journal"
+      >
+        Journal *
+      </label>
+      <input
+        class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
+        name="journal"
+        id="journal"
+        type="text"
+        maxlength="100"
+        placeholder="Journal"
+        aria-label="Journal"
+        required
+        [(ngModel)]="journal"
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="block text-primary-700 text-sm font-bold mb-2"
+        for="journal"
+      >
+        Lien *
+      </label>
+      <input
+        class="w-full focus:ring-2 focus:ring-primary-700 outline-none text-base leading-none text-primary-900 p-3 focus:oultine-none focus:border-primary-700 bg-white rounded placeholder-primary-100"
+        name="link"
+        id="link"
+        type="text"
+        maxlength="100"
+        placeholder="Lien"
+        aria-label="Lien"
+        required
+        [(ngModel)]="link"
+      />
     </div>
     <div class="mb-4">
       <label

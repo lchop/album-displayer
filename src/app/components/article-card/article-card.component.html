@@ -1,25 +1,38 @@
 <div class="container md:w-138 bg-primary-50 rounded-lg shadow-xl">   
         <img class="md:object-cover object-center md:w-138 md:h-[288px] rounded-t-lg bg-primary-50" src="{{article.imageName}}" alt="Syncing" />
     <div class="block md:w-138 md:h-92 bg-primary-800 opacity-40 text-left rounded-b-lg px-4 py-4">
-        <h2 class="md:h-12 px-1 py-2 font-bold text-white">
-        Titre:
-        <span class="font-thin text-white text-left">{{ article.title }}</span>
+        <h2 class="md:h-12 px-1 py-2 font-bold font-title leading-12 text-xl line-clamp-1 text-primary-50">
+            {{ article.title }}
         </h2>
-        <h2 class="md:h-36 px-1 py-2 font-bold text-white">
-        Description:
-        <span class="font-thin text-white text-left">{{ article.description }}</span>
+        <h2 class="md:h-36 line-clamp-5 px-1 py-2 font-medium leading-6 text-md text-white">
+            {{ article.description }}
         </h2>
-        <h2 class="px-1 py-2 font-bold text-white">
-        Date de publication:
-        <span class="font-thin text-white text-left">{{ article.creationDate | date :'dd/MM/YYYY' }}</span>
-        </h2>
-        <h2 class="md:h-14 px-1 py-2 font-bold text-white">
-        Télécharger l'article complet:
-        <a *ngIf="hasFile; else hasNoFile" class="font-thin text-primary-100 underline" target="_blank" href="{{ article.fileName }}" download> {{ article.title }} </a>
-        <ng-template #hasNoFile>
-        <span class="font-thin text-white text-left">Pas de fichier associé</span>
-        </ng-template>
-        
-    </h2>
+        <div class="block">
+            <div class="px-1 py-2 inline-flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#ffffff" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M40,88H216V48a8,8,0,0,0-8-8H48a8,8,0,0,0-8,8Z" opacity="0.2"></path><rect x="40" y="40" width="176" height="176" rx="8" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="176" y1="24" x2="176" y2="56" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="80" y1="24" x2="80" y2="56" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="40" y1="88" x2="216" y2="88" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M92,128h28l-16,20a16,16,0,1,1-11.3,27.3" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><polyline points="144 140 160 128 160 180" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg>
+                <span class="ml-4 font-thin text-white text-left">{{ article.creationDate | date :'dd/MM/YYYY' }}</span>
+            </div>
+        </div>
+        <div class="block">
+            <div class="md:h-12 px-1 py-2 inline-flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#ffffff" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M32,200a16,16,0,0,0,16-16V64a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V184a16,16,0,0,1-16,16Z" opacity="0.2"></path><line x1="96" y1="112" x2="176" y2="112" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="96" y1="144" x2="176" y2="144" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M32,200a16,16,0,0,0,16-16V64a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V184a16,16,0,0,1-16,16Z" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M32,200a16,16,0,0,1-16-16h0V88" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+                <span class="ml-4 font-thin text-white text-left">{{ article.journal }}</span>
+            </div>
+        </div>
+        <div class="block">
+            <div class="md:h-12 px-1 py-2 inline-flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#ffffff" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
+                <a class=" ml-4 font-thin text-white underline" target="_blank" href="{{ article.link }}"> {{ article.link }} </a>
+            </div>
+        </div>
+        <div class="block">
+            <div *ngIf="loggedIn" class="md:h-14 px-1 py-2 inline-flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#ffffff" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M216,72V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V72Z" opacity="0.2"></path><path d="M208,216H48a8,8,0,0,1-8-8V72L56,40H200l16,32V208A8,8,0,0,1,208,216Z" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><polyline points="94.1 150.1 128 184 161.9 150.1" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="128" y1="104" x2="128" y2="184" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="40" y1="72" x2="216" y2="72" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
+                <a *ngIf="hasFile; else hasNoFile" class=" ml-4 font-thin text-primary-100 underline" target="_blank" href="{{ article.fileName }}" download> {{ article.title }} </a>
+                <ng-template #hasNoFile>
+                <span class="ml-4 font-thin text-white text-left">Pas de fichier associé</span>
+                </ng-template>
+            </div>
+        </div>
     </div>
 </div>

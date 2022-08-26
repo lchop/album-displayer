@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
 import { Article } from '../articles/article.model';
 
 @Component({
@@ -8,6 +9,7 @@ import { Article } from '../articles/article.model';
 export class ArticleCardComponent implements OnInit {
 
   hasFile = true;
+  loggedIn = false
   article: Article;
   @Input() set inputArticle(article: Article) {
     if (!article.fileName){
@@ -19,7 +21,11 @@ export class ArticleCardComponent implements OnInit {
    this.article = article;
  }
 
-  constructor() { }
+  constructor(private auth: AuthService) {
+    this.auth.isLogIn$.subscribe(loggedIn => {
+      this.loggedIn = loggedIn;
+    });
+   }
 
   ngOnInit(): void {
   }
