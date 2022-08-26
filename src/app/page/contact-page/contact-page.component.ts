@@ -83,7 +83,6 @@ export class ContactPageComponent implements OnInit {
       form.value.company.test;
       this.contact.postMessageContact(form.value)
         .subscribe(response => {
-          location.href = 'https://mailthis.to/confirm'
         this.waitResponse = false;
         }, error => {
         console.log({ error })

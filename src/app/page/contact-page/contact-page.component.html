@@ -9,7 +9,7 @@
           Envie de travailler avec nous 
           <svg class="ml-8" xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#911011" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="224 96 145.5 152 110.5 152 32 96 128 32 224 96" opacity="0.2"></polygon><path d="M32,96V200a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V96L128,32Z" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="110.5" y1="152" x2="34.5" y2="205.7" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="221.5" y1="205.7" x2="145.5" y2="152" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="224 96 145.5 152 110.5 152 32 96" fill="none" stroke="#911011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg>
         </p>
-          <form (ngSubmit)="onSubmit(formContact)" #formContact="ngForm">
+          <form method="POST" (ngSubmit)="onSubmit(formContact)" #formContact="ngForm">
             <div class="md:flex items-center">
               <div class="md:w-72 flex flex-col">
                 <label *ngIf="correctName; else wrongName;" for="name" class="text-base font-semibold leading-none text-primary-800"
@@ -118,7 +118,7 @@
             <div class="flex items-center justify-center w-full mt-12">
               
               <button
-              *ngIf="!waitResponse"
+              *ngIf="!waitResponse; else responseDone"
               [disabled]="(formContact.invalid) || waitResponse || isDisabled"
               type = "submit"
               class="relative py-4 px-6 disabled:bg-primary-100 disabled:hover:bg-primary-100 bg-secondary-600 hover:bg-secondary-500 rounded-lg leading-none flex items-center text divide-x divide-secondary-50"
@@ -131,12 +131,10 @@
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M88,134.9,224.1,36.6h0a7.8,7.8,0,0,0-6.2-.2L33.3,108.9c-7.4,2.9-6.4,13.7,1.4,15.3Z" opacity="0.2"></path><path d="M132.9,174.4l-31.2,31.2A8,8,0,0,1,88,200V134.9Z" opacity="0.2"></path><path d="M88,134.9,177.9,214a8,8,0,0,0,13.1-4.2L228.6,45.6a8,8,0,0,0-10.7-9.2L33.3,108.9c-7.4,2.9-6.4,13.7,1.4,15.3Z" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="88" y1="134.9" x2="224.1" y2="36.6" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M132.9,174.4l-31.2,31.2A8,8,0,0,1,88,200V134.9" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
                     </span>
               </button>
-              <div class="mr-4" *ngIf="waitResponse">
-                  <svg role="status" class="w-8 h-8 mr-2 text-primary-100 animate-spin fill-primary-800" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                </svg>
-              </div>
+              <ng-template #responseDone>
+              
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#fafafa" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" opacity="0.2"></circle><polyline points="172 104 113.3 160 84 132" fill="none" stroke="#901011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><circle cx="128" cy="128" r="96" fill="none" stroke="#901011" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle></svg>
+              </ng-template>
             </div>
             <div 
               *ngIf="prmName.errors?.['minlength'] && prmName.touched"
